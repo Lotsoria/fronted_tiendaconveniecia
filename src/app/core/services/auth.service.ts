@@ -56,10 +56,12 @@ export class AuthenticationService {
         //     return user;
         // });
 
-        return this.http.post(AUTH_API + 'signin', {
+        const data =  this.http.post(AUTH_API + 'signin', {
             email,
             password
           }, httpOptions);
+        console.log(data);
+        return data;
     }
 
     /**
