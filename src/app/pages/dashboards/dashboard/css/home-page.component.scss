@@ -1,0 +1,142 @@
+
+@import 'https://fonts.googleapis.com/css2?family=Bungee&display=swap';
+@import "https://fonts.googleapis.com/css2?family=Poppins&display=swap";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    // font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+.conteiner-landing-page{
+    position: relative;
+    .content-landing-page__nav{
+        display: flex;
+        height: 100px;
+        justify-content: space-around;
+        align-items: center;
+        .logo{
+            p{
+                font-size: 50px;
+                font-family: 'Bungee', sans-serif;
+            }
+        }
+        .menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .button-login{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100px;
+                height: 40px;
+                border: #111 2px solid;
+                border-radius: 25%;
+                &:hover{
+                    background: #111;
+                    color: white;
+                }
+            }
+            a{
+                text-decoration: none;
+                color: #111;
+                padding: 20px;
+                font-family: 'Bungee', sans-serif;
+            }
+        }
+    }
+    .banner {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // &::after {
+        //     content: "";
+        //     position: absolute;
+        //     bottom: 0;
+        //     left: 0;
+        //     width: 100%;
+        //     height: 400px;
+        //     z-index: 1000;
+        //     background: linear-gradient(to top, #111, transparent);
+        //     background: linear-gradient(to , #111, transparent);
+        // }
+        // &::before {
+        //     content: "";
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 100%;
+        //     height: 400px;
+        //     z-index: 1000;
+        //     background: linear-gradient(to bottom, #111, transparent);
+        //     background: linear-gradient(to , #111, transparent);
+        // }
+
+        .content {
+            position: relativa;
+            min-width: 500px;
+            max-width: 900px;
+            text-align: center;
+            .example-form{
+                .example-full-width{
+                    width: 100%;
+                }
+            }
+        }
+        .info {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            top: 60%;
+            right: 0;
+            z-index: 10000;
+            max-width: 300px;
+            min-height: 200px;
+            background: #fff;
+            border-radius: 10px 0 0 10px;
+            h2 {
+                color: #111;
+                font-size: 2em;
+                font-weight: 900;
+            }
+            p {
+                color: #111;
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+a.btn {
+    position: relative;
+    display: inline-block;
+    margin-top: 30px;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+.fitBg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+.disponibilidad{
+    font-size: 10px;
+}
+
+
+
+

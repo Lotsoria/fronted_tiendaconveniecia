@@ -1,6 +1,4 @@
-<!-- Start Breadcrumbs -->
-<!-- <app-breadcrumbs title="DASHBOARD" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs> -->
-<!-- End Breadcrumbs -->
+<!--
 
 <div class="row">
     <div class="col">
@@ -24,34 +22,34 @@
                                                 class="ri-calendar-2-line"></i></div>
                                     </div>
                                 </div>
-                                <!--end col-->
+          
                                 <div class="col-auto">
                                     <button type="button" class="btn btn-soft-primary"
                                         routerLink="/ecommerce/add-product"><i
                                             class="ri-add-circle-line align-middle me-1"></i> Add Product</button>
                                 </div>
-                                <!--end col-->
+                        
                                 <div class="col-auto">
                                     <button type="button"
                                         class="btn btn-soft-secondary btn-icon waves-effect waves-light layout-rightside-btn"
                                         (click)="toggleActivity()"><i class="ri-pulse-line"></i></button>
                                 </div>
-                                <!--end col-->
+     
                             </div>
-                            <!--end row-->
+                    
                         </div>
-                    </div><!-- end card header -->
+               
                 </div>
-                <!--end col-->
+            
             </div>
-            <!--end row-->
+         
 
             <div class="row">
                 <div *ngFor="let stat of statData" class="col-xl-3 col-md-6">
                     <app-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon"
                         [persantage]="stat.persantage" [profit]="stat.profit" [desciption]="stat.desciption"></app-stat>
                 </div>
-            </div> <!-- end row-->
+            </div> 
 
             <div class="row">
                 <div class="col-xl-8">
@@ -76,7 +74,7 @@
                                     1Y
                                 </button>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-header p-0 border-0 bg-light-subtle">
                             <div class="row g-0 text-center">
@@ -86,21 +84,19 @@
                                         <p class="text-muted mb-0">Orders</p>
                                     </div>
                                 </div>
-                                <!--end col-->
+                            
                                 <div class="col-6 col-sm-3">
                                     <div class="p-3 border border-dashed border-start-0">
                                         <h5 class="mb-1">$<span [countUp]="22.89" class="counter-value" [options]="option"></span>k</h5>
                                         <p class="text-muted mb-0">Earnings</p>
                                     </div>
                                 </div>
-                                <!--end col-->
                                 <div class="col-6 col-sm-3">
                                     <div class="p-3 border border-dashed border-start-0">
                                         <h5 class="mb-1"><span [countUp]="367" class="counter-value" [options]="option"></span></h5>
                                         <p class="text-muted mb-0">Refunds</p>
                                     </div>
                                 </div>
-                                <!--end col-->
                                 <div class="col-6 col-sm-3">
                                     <div class="p-3 border border-dashed border-start-0 border-end-0">
                                         <h5 class="mb-1 text-success"><span [countUp]="18.92" class="counter-value"
@@ -108,9 +104,8 @@
                                         <p class="text-muted mb-0">Conversation Ratio</p>
                                     </div>
                                 </div>
-                                <!--end col-->
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body p-0 pb-2">
                             <div class="w-100">
@@ -124,12 +119,11 @@
                                     [labels]="analyticsChart.labels" dir="ltr">
                                 </apx-chart>
                             </div>
-                        </div><!-- end card body -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-xl-4">
-                    <!-- card -->
                     <div class="card card-height-100">
                         <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">Sales by Locations</h4>
@@ -138,9 +132,8 @@
                                     Export Report
                                 </button>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
-                        <!-- card body -->
                         <div class="card-body">
 
                             <div id="sales-by-locations" leaflet style="height: 269px;" [leafletOptions]="options"
@@ -169,11 +162,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end card body -->
                     </div>
-                    <!-- end card -->
                 </div>
-                <!-- end col -->
             </div>
 
             <div class="row">
@@ -199,7 +189,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
@@ -257,7 +247,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
@@ -293,10 +283,10 @@
                                 </div>
                             </div>
 
-                        </div> <!-- .card-body-->
-                    </div> <!-- .card-->
-                </div> <!-- .col-->
-            </div> <!-- end row-->
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
 
             <div class="row">
                 <div class="col-xl-4">
@@ -317,7 +307,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body">
                             <apx-chart class="apex-charts" dir="ltr" [series]="SalesCategoryChart.series"
@@ -326,8 +316,8 @@
                                 [dataLabels]="SalesCategoryChart.dataLabels" [colors]="SalesCategoryChart.colors"
                                 dir="ltr"></apx-chart>
                         </div>
-                    </div> <!-- .card-->
-                </div> <!-- .col-->
+                    </div> 
+                </div> 
 
                 <div class="col-xl-8">
                     <div class="card">
@@ -338,20 +328,20 @@
                                     <i class="ri-file-list-3-line align-middle"></i> Generate Report
                                 </button>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
                                 <app-recent-orders [RecentSelling]="RecentSelling"></app-recent-orders>
                             </div>
                         </div>
-                    </div> <!-- .card-->
-                </div> <!-- .col-->
-            </div> <!-- end row-->
+                    </div> <
+                </div> 
+            </div> 
 
-        </div> <!-- end .h-100-->
+        </div> 
 
-    </div> <!-- end col -->
+    </div>
 
     <div class="col-auto layout-rightside-col">
         <div class="overlay" (click)="SidebarHide()"></div>
@@ -543,7 +533,7 @@
                     </div>
                     <div class="p-3">
                         <h6 class="text-muted mb-3 text-uppercase fw-semibold">Products Reviews</h6>
-                        <!-- Swiper -->
+        
                         <ngx-slick-carousel class="carousel" [config]="Vertical" style="height: 280px; width: auth;">
                             <div class="swiper-slide" ngxSlickItem>
                                 <div class="card border border-dashed shadow-none m-0">
@@ -711,7 +701,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
 
                             <div class="row align-items-center g-2">
                                 <div class="col-auto">
@@ -734,7 +723,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
 
                             <div class="row align-items-center g-2">
                                 <div class="col-auto">
@@ -757,7 +745,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
 
                             <div class="row align-items-center g-2">
                                 <div class="col-auto">
@@ -780,7 +767,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
+
 
                             <div class="row align-items-center g-2">
                                 <div class="col-auto">
@@ -801,7 +788,7 @@
                                         <h6 class="mb-0 text-muted">408</h6>
                                     </div>
                                 </div>
-                            </div><!-- end row -->
+                            </div>
                         </div>
                     </div>
 
@@ -819,10 +806,42 @@
                     </div>
 
                 </div>
-            </div> <!-- end card-->
-        </div> <!-- end .rightbar-->
+            </div>
+        </div> 
 
-    </div> <!-- end col -->
+    </div> 
+</div>
+
+ -->
+<div class="conteiner-landing-page">
+  <section class="banner">
+    <img src="../../../../../assets/banner1.webp" alt="banner" class="fitBg" />
+    <div class="content">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Productos</mat-label>
+          <input type="text" matInput />
+          <mat-autocomplete class="mat-autocomplete">
+            <mat-option [value]="option" class="mat-option">
+              <div>
+                {{ option }}
+              </div>
+              <div class="disponibilidad">Disponibilidad: {{ option }}</div>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="info">
+      <h2>Bienvenidos</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi eos quam
+        quasi id molestias cumque, delectus eius aperiam veniam culpa expedita
+        provident molestiae laboriosam, dicta, excepturi obcaecati qui
+        perspiciatis at.
+      </p>
+    </div>
+  </section>
 </div>
 
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
