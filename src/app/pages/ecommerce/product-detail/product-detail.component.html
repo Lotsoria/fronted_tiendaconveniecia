@@ -7,29 +7,6 @@
         <div class="card">
             <div class="card-body">
                 <div class="row gx-lg-5">
-                    <div class="col-xl-4 col-md-8 mx-auto">
-                        <div *ngIf="!products._id" class="product-img-slider sticky-side-div">
-                            <ngx-slick-carousel [config]="config" class="carousel" #slickModal="slick-carousel" (afterChange)="slickChange($event)">
-                                <div class="swiper-slide" *ngFor="let i of productDetail[0].images" ngxSlickItem>
-                                    <img src="{{i}}" alt="" class="img-fluid d-block" />
-                                </div>
-                            </ngx-slick-carousel>
-                            <ngx-slick-carousel class="carousel swiper product-nav-slider mt-2" [config]="slidesConfig">
-                                <div ngxSlickItem *ngFor="let i of productDetail[0].images; let x=index;" class="swiper-slide swiperlist me-2" (click)="slidePreview(x,$event)">
-                                    <div class="nav-slide-item">
-                                        <img src="{{i}}" alt="" class="img-fluid d-block">
-                                    </div>
-                                </div>
-                            </ngx-slick-carousel>
-                        </div>
-                        <div *ngIf="products._id" class="product-img-slider sticky-side-div">
-                            <div class="swiper-slide">
-                                <img src="assets/images/products/{{products.image}}" alt="" class="img-fluid d-block" />
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col -->
-
                     <div class="col-xl-8">
                         <div class="mt-xl-0 mt-5">
                             <div class="d-flex">
