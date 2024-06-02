@@ -82,7 +82,26 @@ export const MENU: MenuItem[] = [
       },
     ]
   },
+  // CONFIGURACIÓN
   
+  {
+    id: 54,
+    label: 'MENUITEMS.PAGES.TEXT',
+    isTitle: true
+  },
+  {
+    id: 55,
+    label: 'MENUITEMS.AUTHENTICATION.TEXT',
+    icon: 'users',
+    subItems: [
+      {
+        id: 62,
+        label: 'MENUITEMS.AUTHENTICATION.LIST.PASSWORDRESET',
+        link: '/auth/pass-create/cover',
+        parentId: 55
+      },
+    ]
+  },
 
 ];
 

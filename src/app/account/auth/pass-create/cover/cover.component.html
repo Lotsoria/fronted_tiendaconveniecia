@@ -54,13 +54,26 @@
   
                             <div class="col-lg-6">
                                 <div class="p-lg-5 p-4">
-                                    <h5 class="text-primary">Create new password</h5>
+                                    <h5 class="text-primary">Reset password</h5>
                                     <p class="text-muted">Your new password must be different from previous used password.</p>
 
                                     <div class="p-2">
                                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                                             <div class="mb-3">
-                                                <label class="form-label" for="password-input">Password</label>
+                                                <label class="form-label" for="old-password-input">Old Password</label>
+                                                <div class="position-relative auth-pass-inputgroup">
+                                                    <input [type]="passwordField ? 'text' : 'password'" class="form-control pe-5 password-input" 
+                                                        placeholder="Enter password" id="old-password-input" aria-describedby="passwordInput"
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="opassword"
+                                                        [ngClass]="{ 'is-invalid': submitted && f['opassword'].errors }">
+                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                        type="button" id="old-password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
+                                                    }" (click)="togglepasswordField()"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="password-input">New Password</label>
                                                 <div class="position-relative auth-pass-inputgroup">
                                                     <input [type]="passwordField ? 'text' : 'password'" class="form-control pe-5 password-input" 
                                                         placeholder="Enter password" id="password-input" aria-describedby="passwordInput"
@@ -113,7 +126,7 @@
                                     </div>
 
                                     <div class="mt-5 text-center">
-                                        <p class="mb-0">Wait, I remember my password... <a routerLink="/auth/signin/cover" class="fw-semibold text-primary text-decoration-underline"> Click here </a> </p>
+                                        <p class="mb-0">Wait, I don't want change my password... <a routerLink="/" class="fw-semibold text-primary text-decoration-underline"> Click here </a> </p>
                                     </div>
                                 </div>
                             </div>
