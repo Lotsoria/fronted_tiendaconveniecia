@@ -97,8 +97,21 @@ export const MENU: MenuItem[] = [
       {
         id: 62,
         label: 'MENUITEMS.AUTHENTICATION.LIST.PASSWORDRESET',
-        link: '/auth/pass-create/cover',
+        link: '/auth/pass-reset/cover',
         parentId: 55
+      },
+    ]
+  },
+  {
+    id: 82,
+    label: 'MENUITEMS.PAGES.TEXT',
+    icon: 'command',
+    subItems: [
+      {
+        id: 87,
+        label: 'MENUITEMS.PAGES.LIST.TEAM',
+        link: '/pages/team',
+        parentId: 82
       },
     ]
   },

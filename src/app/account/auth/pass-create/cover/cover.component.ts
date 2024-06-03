@@ -31,7 +31,6 @@ export class CoverComponent implements OnInit {
      * Form Validatyion
      */
      this.loginForm = this.formBuilder.group({
-      opassword: ['', [Validators.required]],
       password: ['', [Validators.required]],
       cpassword: ['', Validators.required],
     });
