@@ -8,7 +8,7 @@
             <div class="col-sm-4">
                 <div class="search-box">
                     <input type="text" class="form-control"
-                        placeholder="Search for name, tasks, projects or something..." [(ngModel)]="term">
+                        placeholder="Search for name" [(ngModel)]="term">
                     <i class="ri-search-line search-icon"></i>
                 </div>
             </div><!--end col-->
@@ -25,21 +25,12 @@
                                     <div class="col" *ngFor="let data of Team | filterBy:['name']:term; let i = index"
                                         id="t_{{data.id}}">
                                         <div class="card team-box">
-                                            <div class="team-cover">
-                                                <img src="{{data.backgroundImg}}" alt="" class="img-fluid" />
-                                            </div>
                                             <div class="card-body p-4">
                                                 <div class="row align-items-center team-row">
                                                     <div class="col team-settings">
                                                         <div class="row">
                                                             <div class="col">
                                                                 <div class="flex-shrink-0 me-2">
-                                                                    <button type="button"
-                                                                        class="btn btn-light btn-icon rounded-circle btn-sm favourite-btn star_{{data.id}}"
-                                                                        [ngClass]="{'active': data.isActive == true}"
-                                                                        (click)="activeMenu(data.id)">
-                                                                        <i class="ri-star-fill fs-14"></i>
-                                                                    </button>
                                                                 </div>
                                                             </div>
                                                             <div class="col text-end dropdown" ngbDropdown>
@@ -66,17 +57,6 @@
                                                     </div>
                                                     <div class="col-lg-4 col">
                                                         <div class="team-profile-img">
-                                                            <div class="avatar-lg img-thumbnail rounded-circle flex-shrink-0"
-                                                                *ngIf="data.userImage">
-                                                                <img src="{{data.userImage}}"
-                                                                    class="rounded-circle img-fluid userprofile" alt="">
-                                                            </div>
-                                                            <div class="avatar-lg img-thumbnail rounded-circle flex-shrink-0"
-                                                                *ngIf="!data.userImage">
-                                                                <div
-                                                                    class="avatar-title border bg-light text-primary rounded-circle text-uppercase">
-                                                                    {{ data.name.charAt(0) }}</div>
-                                                            </div>
                                                             <div class="team-content">
                                                                 <a data-bs-toggle="offcanvas"
                                                                     aria-controls="offcanvasExample"
@@ -88,22 +68,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-4 col">
-                                                        <div class="row text-muted text-center">
-                                                            <div class="col-6 border-end border-end-dashed">
-                                                                <h5 class="mb-1">{{data.projectCount}}</h5>
-                                                                <p class="text-muted mb-0">Projects</p>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <h5 class="mb-1">{{data.taskCount}}</h5>
-                                                                <p class="text-muted mb-0">Tasks</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="col-lg-2 col">
                                                         <div class="text-end">
-                                                            <a routerLink="/pages/profile"
-                                                                class="btn btn-light view-btn">View Profile</a>
+                                                            <a routerLink="/pages/profile-setting"
+                                                                class="btn btn-light view-btn">Change Password</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,21 +97,12 @@
                                 <div class="team-list list-view-filter row">
                                     <div class="col" *ngFor="let data of Team | filterBy:['name']:term;let i = index;" id="t_{{data.id}}">
                                         <div class="card team-box">
-                                            <div class="team-cover">
-                                                <img src="{{data.backgroundImg}}" alt="" class="img-fluid" />
-                                            </div>
                                             <div class="card-body p-4">
                                                 <div class="row align-items-center team-row">
                                                     <div class="col team-settings">
                                                         <div class="row">
                                                             <div class="col">
                                                                 <div class="flex-shrink-0 me-2">
-                                                                    <button type="button"
-                                                                        class="btn btn-light btn-icon rounded-circle btn-sm favourite-btn star_{{data.id}}"
-                                                                        [ngClass]="{'active': data.isActive == true}"
-                                                                        (click)="activeMenu(data.id)">
-                                                                        <i class="ri-star-fill fs-14"></i>
-                                                                    </button>
                                                                 </div>
                                                             </div>
                                                             <div class="col text-end dropdown" ngbDropdown>
@@ -169,17 +128,6 @@
                                                     </div>
                                                     <div class="col-lg-4 col">
                                                         <div class="team-profile-img">
-                                                            <div class="avatar-lg img-thumbnail rounded-circle flex-shrink-0"
-                                                                *ngIf="data.userImage">
-                                                                <img src="{{data.userImage}}"
-                                                                    class="rounded-circle img-fluid userprofile" alt="">
-                                                            </div>
-                                                            <div class="avatar-lg img-thumbnail rounded-circle flex-shrink-0"
-                                                                *ngIf="!data.userImage">
-                                                                <div
-                                                                    class="avatar-title border bg-light text-primary rounded-circle text-uppercase">
-                                                                    {{ data.name.charAt(0) }}</div>
-                                                            </div>
                                                             <div class="team-content">
                                                                 <a data-bs-toggle="offcanvas"
                                                                     aria-controls="offcanvasExample"
@@ -191,22 +139,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-4 col">
-                                                        <div class="row text-muted text-center">
-                                                            <div class="col-6 border-end border-end-dashed">
-                                                                <h5 class="mb-1">{{data.projectCount}}</h5>
-                                                                <p class="text-muted mb-0">Projects</p>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <h5 class="mb-1">{{data.taskCount}}</h5>
-                                                                <p class="text-muted mb-0">Tasks</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="col-lg-2 col">
                                                         <div class="text-end">
                                                             <a routerLink="/pages/profile"
-                                                                class="btn btn-light view-btn">View Profile</a>
+                                                                class="btn btn-light view-btn">Change Password</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -223,15 +159,6 @@
                                 </div><!--end row-->
                             </ng-template>
                         </li>
-                    </ul>
-                    <button type="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false"
-                        class="btn btn-soft-info btn-icon fs-14 arrow-none" ngbDropdownToggle><i
-                            class="ri-more-2-fill"></i></button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1" ngbDropdownMenu>
-                        <li><a class="dropdown-item" href="javascript:void(0);">All</a></li>
-                        <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
-                        <li><a class="dropdown-item" href="javascript:void(0);">Last Month</a></li>
-                        <li><a class="dropdown-item" href="javascript:void(0);">Last Year</a></li>
                     </ul>
                     <button class="btn btn-primary" 
                         (click)="openModal(content)"><i class="ri-add-fill me-1 align-bottom"></i> Add Members</button>
@@ -270,12 +197,6 @@
                                                         <label for="cover-image-input" class="mb-0"
                                                             data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Select Cover Image">
-                                                            <div class="avatar-xs">
-                                                                <div
-                                                                    class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                                    <i class="ri-image-fill"></i>
-                                                                </div>
-                                                            </div>
                                                         </label>
                                                         <input class="form-control d-none" value=""
                                                             id="cover-image-input" type="file"
@@ -294,24 +215,9 @@
                                 <div class="text-center mb-4 mt-n5 pt-2">
                                     <div class="position-relative d-inline-block">
                                         <div class="position-absolute bottom-0 end-0">
-                                            <label for="member-image-input" class="mb-0" data-bs-toggle="tooltip"
-                                                data-bs-placement="right" title="Select Member Image">
-                                                <div class="avatar-xs">
-                                                    <div
-                                                        class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                        <i class="ri-image-fill"></i>
-                                                    </div>
-                                                </div>
-                                            </label>
                                             <input class="form-control d-none" value="" id="member-image-input"
                                                 type="file" accept="image/png, image/gif, image/jpeg"
                                                 (change)="fileChange($event)">
-                                        </div>
-                                        <div class="avatar-lg">
-                                            <div class="avatar-title bg-light rounded-circle">
-                                                <img src="assets/images/users/user-dummy-img.jpg" id="member-img"
-                                                    class="avatar-md rounded-circle h-auto" />
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
