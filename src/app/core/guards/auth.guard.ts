@@ -75,3 +75,104 @@ export class AuthGuardAdmin {
     return false;
   }
 }
+
+
+@Injectable({ providedIn: "root" })
+export class AuthGuardCashierAdmin {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private authFackservice: AuthfakeauthenticationService
+  ) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("rol");
+
+    if (token) {
+      if (role === "cashier" || role === "admin" ) {
+        return true;
+      } else {
+        // User is logged in but does not have the USER role
+        this.router.navigate(["/auth/errors/404-basic"], {
+          queryParams: { returnUrl: state.url },
+        });
+        return false;
+      }
+    }
+
+    // Not logged in, so redirect to login page with the return url
+
+    this.router.navigate(["/auth/login"], {
+      queryParams: { returnUrl: state.url },
+    });
+    return false;
+  }
+}
+
+
+@Injectable({ providedIn: "root" })
+export class AuthGuardAdminSuper {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private authFackservice: AuthfakeauthenticationService
+  ) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("rol");
+
+    if (token) {
+      if (role === "superadmin" || role === "admin" ) {
+        return true;
+      } else {
+        // User is logged in but does not have the USER role
+        this.router.navigate(["/auth/errors/404-basic"], {
+          queryParams: { returnUrl: state.url },
+        });
+        return false;
+      }
+    }
+
+    // Not logged in, so redirect to login page with the return url
+
+    this.router.navigate(["/auth/login"], {
+      queryParams: { returnUrl: state.url },
+    });
+    return false;
+  }
+}
+
+@Injectable({ providedIn: "root" })
+export class AuthGuardSuperAdmin {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private authFackservice: AuthfakeauthenticationService
+  ) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("rol");
+
+    if (token) {
+      if (role === "superadmin") {
+        return true;
+      } else {
+        // User is logged in but does not have the USER role
+        this.router.navigate(["/auth/errors/404-basic"], {
+          queryParams: { returnUrl: state.url },
+        });
+        return false;
+      }
+    }
+
+    // Not logged in, so redirect to login page with the return url
+
+    this.router.navigate(["/auth/login"], {
+      queryParams: { returnUrl: state.url },
+    });
+    return false;
+  }
+}

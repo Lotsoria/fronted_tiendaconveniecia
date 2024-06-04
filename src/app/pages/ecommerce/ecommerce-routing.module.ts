@@ -12,17 +12,18 @@ import { CartComponent } from "./cart/cart.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { SellersComponent } from "./sellers/sellers.component";
 import { SellerDetailsComponent } from "./seller-details/seller-details.component";
-import { AuthGuardAdmin } from 'src/app/core/guards/auth.guard';
+import { AuthGuardCashierAdmin } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: "products",
     component: ProductsComponent,
-    canActivate: [AuthGuardAdmin],
+    canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "product-detail/:id",
-    component: ProductDetailComponent
+    component: ProductDetailComponent,
+    canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "add-product",
@@ -42,11 +43,13 @@ const routes: Routes = [
   },
   {
     path: "cart",
-    component: CartComponent
+    component: CartComponent,
+    canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "checkout",
-    component: CheckoutComponent
+    component: CheckoutComponent,
+    canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "sellers",
