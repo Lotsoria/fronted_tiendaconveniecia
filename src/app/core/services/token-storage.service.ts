@@ -30,6 +30,7 @@ export class TokenStorageService {
   public getUser(): any {
     const user = window.localStorage.getItem(USER_KEY);    
     if (user) {
+      console.log(JSON.parse(user));
       return JSON.parse(user);
     }
 
