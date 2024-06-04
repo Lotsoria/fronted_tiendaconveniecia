@@ -203,7 +203,7 @@ export const MENUADMIN: MenuItem[] = [
         parentId: 82
       },
       {
-        id: 89,
+        id: 88,
         label: 'LOGBOOK',
         link: '/pages/logbook',
         parentId: 82
