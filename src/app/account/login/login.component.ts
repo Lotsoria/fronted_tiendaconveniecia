@@ -90,6 +90,8 @@ export class LoginComponent implements OnInit {
             city: data.country,
             first_name: data.firstname,
             last_name: data.lastname,
+            name: data.firstname,
+            restriction: data.role,
             role: data.role,
           };
           localStorage.setItem("toast", "true");

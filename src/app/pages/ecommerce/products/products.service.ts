@@ -33,6 +33,7 @@ interface State {
   endIndex: number;
   totalRecords: number;
 }
+
 const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 function sort(countries: productModel[], column: SortColumn, direction: string): productModel[] {
   if (direction === '' || column === '') {
