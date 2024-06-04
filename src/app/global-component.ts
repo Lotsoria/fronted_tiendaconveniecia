@@ -4,8 +4,8 @@ export const GlobalComponent = {
     headerToken : {'Authorization': `Bearer ${localStorage.getItem('token')}`},
 
     // Auth Api
-    AUTH_API:"https://api-node.themesbrand.website/auth/",
-    // AUTH_API:"http://localhost:8081/auth/",
+    // AUTH_API:"https://api-node.themesbrand.website/auth/",
+    AUTH_API:"http://localhost:8081/auth/",
 
     // Products Api
     product:'apps/product',

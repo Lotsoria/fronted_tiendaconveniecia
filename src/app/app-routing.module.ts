@@ -25,12 +25,21 @@ const routes: Routes = [
       import("./extraspages/extraspages.module").then(
         (m) => m.ExtraspagesModule
       ),
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard],
   },
   {
     path: "landing",
     loadChildren: () =>
       import("./landing/landing.module").then((m) => m.LandingModule),
+  },
+  {
+    path: "auth/errors/404-basic",
+    loadChildren: () =>
+      import("./account/auth/errors/errors.module").then((m) => m.ErrorsModule), // Assuming you have an ErrorsModule
+  },
+  {
+    path: "**",
+    redirectTo: "auth/errors/404-basic",
   },
 ];
 

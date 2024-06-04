@@ -12,11 +12,13 @@ import { CartComponent } from "./cart/cart.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { SellersComponent } from "./sellers/sellers.component";
 import { SellerDetailsComponent } from "./seller-details/seller-details.component";
+import { AuthGuardAdmin } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: "products",
-    component: ProductsComponent
+    component: ProductsComponent,
+    canActivate: [AuthGuardAdmin],
   },
   {
     path: "product-detail/:id",
