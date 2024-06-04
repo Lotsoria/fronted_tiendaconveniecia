@@ -196,6 +196,18 @@ export const MENUADMIN: MenuItem[] = [
         link: '/pages/team',
         parentId: 82
       },
+      {
+        id: 88,
+        label: 'DEVICES',
+        link: '/pages/device',
+        parentId: 82
+      },
+      {
+        id: 89,
+        label: 'LOGBOOK',
+        link: '/pages/logbook',
+        parentId: 82
+      },
     ]
   },
 
@@ -311,6 +323,12 @@ export const MENUSUPER: MenuItem[] = [
       {
         id: 87,
         label: 'MENUITEMS.PAGES.LIST.TEAM',
+        link: '/pages/team',
+        parentId: 82
+      },
+      {
+        id: 88,
+        label: 'DEVICES',
         link: '/pages/team',
         parentId: 82
       },
