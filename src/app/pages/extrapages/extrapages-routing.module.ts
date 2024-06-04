@@ -39,7 +39,7 @@ const routes: Routes = [
     component: DeviceComponent
   },
   {
-    path: 'loogbook',
+    path: 'logbook',
     component: LogbooksComponent
 
   },
