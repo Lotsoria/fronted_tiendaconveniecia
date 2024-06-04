@@ -82,6 +82,89 @@ export const MENU: MenuItem[] = [
       },
     ]
   },
+];
+export const MENUADMIN: MenuItem[] = [
+  {
+    id: 1,
+    label: 'MENUITEMS.MENU.TEXT',
+    isTitle: true
+  },
+  {
+    id: 8,
+    label: 'MENUITEMS.APPS.TEXT',
+    icon: 'grid',
+    subItems: [
+      {
+        id: 12,
+        label: 'MENUITEMS.APPS.LIST.ECOMMERCE',
+        link: '/mailbox',
+        parentId: 8,
+        subItems: [
+          {
+            id: 13,
+            label: 'MENUITEMS.APPS.LIST.PRODUCTS',
+            link: '/ecommerce/products',
+            parentId: 12
+          },
+          {
+            id: 14,
+            label: 'MENUITEMS.APPS.LIST.PRODUCTDETAILS',
+            link: '/ecommerce/product-detail/1',
+            parentId: 12
+          },
+          {
+            id: 15,
+            label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
+            link: '/ecommerce/add-product',
+            parentId: 12
+          },
+          {
+            id: 18,
+            label: 'MENUITEMS.APPS.LIST.CUSTOMERS',
+            link: '/ecommerce/customers',
+            parentId: 12
+          },
+          {
+            id: 19,
+            label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
+            link: '/ecommerce/cart',
+            parentId: 12
+          },
+          {
+            id: 20,
+            label: 'MENUITEMS.APPS.LIST.CHECKOUT',
+            link: '/ecommerce/checkout',
+            parentId: 12
+          }
+        ]
+      },
+      {
+        id: 42,
+        label: 'MENUITEMS.APPS.LIST.INVOICES',
+        parentId: 8,
+        subItems: [
+          {
+            id: 43,
+            label: 'MENUITEMS.APPS.LIST.LISTVIEW',
+            link: '/invoices/list',
+            parentId: 42
+          },
+          {
+            id: 44,
+            label: 'MENUITEMS.APPS.LIST.DETAILS',
+            link: '/invoices/details',
+            parentId: 42
+          },
+          {
+            id: 45,
+            label: 'MENUITEMS.APPS.LIST.CREATEINVOICE',
+            link: '/invoices/create',
+            parentId: 42
+          }
+        ]
+      },
+    ]
+  },
   // CONFIGURACIÓN
   
   {
@@ -117,6 +200,125 @@ export const MENU: MenuItem[] = [
   },
 
 ];
+
+export const MENUSUPER: MenuItem[] = [
+  {
+    id: 1,
+    label: 'MENUITEMS.MENU.TEXT',
+    isTitle: true
+  },
+  {
+    id: 8,
+    label: 'MENUITEMS.APPS.TEXT',
+    icon: 'grid',
+    subItems: [
+      {
+        id: 12,
+        label: 'MENUITEMS.APPS.LIST.ECOMMERCE',
+        link: '/mailbox',
+        parentId: 8,
+        subItems: [
+          {
+            id: 13,
+            label: 'MENUITEMS.APPS.LIST.PRODUCTS',
+            link: '/ecommerce/products',
+            parentId: 12
+          },
+          {
+            id: 14,
+            label: 'MENUITEMS.APPS.LIST.PRODUCTDETAILS',
+            link: '/ecommerce/product-detail/1',
+            parentId: 12
+          },
+          {
+            id: 15,
+            label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
+            link: '/ecommerce/add-product',
+            parentId: 12
+          },
+          {
+            id: 18,
+            label: 'MENUITEMS.APPS.LIST.CUSTOMERS',
+            link: '/ecommerce/customers',
+            parentId: 12
+          },
+          {
+            id: 19,
+            label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
+            link: '/ecommerce/cart',
+            parentId: 12
+          },
+          {
+            id: 20,
+            label: 'MENUITEMS.APPS.LIST.CHECKOUT',
+            link: '/ecommerce/checkout',
+            parentId: 12
+          }
+        ]
+      },
+      {
+        id: 42,
+        label: 'MENUITEMS.APPS.LIST.INVOICES',
+        parentId: 8,
+        subItems: [
+          {
+            id: 43,
+            label: 'MENUITEMS.APPS.LIST.LISTVIEW',
+            link: '/invoices/list',
+            parentId: 42
+          },
+          {
+            id: 44,
+            label: 'MENUITEMS.APPS.LIST.DETAILS',
+            link: '/invoices/details',
+            parentId: 42
+          },
+          {
+            id: 45,
+            label: 'MENUITEMS.APPS.LIST.CREATEINVOICE',
+            link: '/invoices/create',
+            parentId: 42
+          }
+        ]
+      },
+    ]
+  },
+  // CONFIGURACIÓN
+  
+  {
+    id: 54,
+    label: 'MENUITEMS.PAGES.TEXT',
+    isTitle: true
+  },
+  {
+    id: 55,
+    label: 'MENUITEMS.AUTHENTICATION.TEXT',
+    icon: 'users',
+    subItems: [
+      {
+        id: 62,
+        label: 'MENUITEMS.AUTHENTICATION.LIST.PASSWORDRESET',
+        link: '/auth/pass-reset/cover',
+        parentId: 55
+      },
+    ]
+  },
+  {
+    id: 82,
+    label: 'MENUITEMS.PAGES.TEXT',
+    icon: 'command',
+    subItems: [
+      {
+        id: 87,
+        label: 'MENUITEMS.PAGES.LIST.TEAM',
+        link: '/pages/team',
+        parentId: 82
+      },
+    ]
+  },
+
+];
+
 
 // export const MENU: MenuItem[] = [
 //   {
