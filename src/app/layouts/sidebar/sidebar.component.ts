@@ -9,9 +9,8 @@ import {
 import { NavigationEnd, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 
-import { MENU, MENUADMIN } from "./menu";
+import { MENUCASHIERADMIN, MENUADMINSUPERADMIN, MENUSUPER } from "./menu";
 import { MenuItem } from "./menu.model";
-import { el } from "@fullcalendar/core/internal-common";
 
 @Component({
   selector: "app-sidebar",
@@ -31,14 +30,13 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     // Menu Items
-
     const typeUser = localStorage.getItem("rol");
-    if (typeUser === "ADMIN") {
-      this.menuItems = MENUADMIN;
-    } else if (typeUser === "USER") {
-      this.menuItems = MENU;
-    } else if (typeUser === "SUPER") {
-      this.menuItems = MENUADMIN;
+    if (typeUser === "superadmin") {
+      this.menuItems = MENUSUPER;
+    } else if (typeUser === "admin" || typeUser === "superadmin") {
+      this.menuItems = MENUADMINSUPERADMIN;
+    } else if (typeUser === "cashier" || typeUser === "admin") {
+      this.menuItems = MENUCASHIERADMIN;
     }
     console.log(this.menuItems);
     this.router.events.subscribe((event) => {

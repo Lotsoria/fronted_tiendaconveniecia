@@ -1,6 +1,6 @@
 import { MenuItem } from './menu.model';
 
-export const MENU: MenuItem[] = [
+export const MENUCASHIERADMIN: MenuItem[] = [
   {
     id: 1,
     label: 'MENUITEMS.MENU.TEXT',
@@ -30,18 +30,6 @@ export const MENU: MenuItem[] = [
             parentId: 12
           },
           {
-            id: 15,
-            label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
-            link: '/ecommerce/add-product',
-            parentId: 12
-          },
-          {
-            id: 18,
-            label: 'MENUITEMS.APPS.LIST.CUSTOMERS',
-            link: '/ecommerce/customers',
-            parentId: 12
-          },
-          {
             id: 19,
             label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
             link: '/ecommerce/cart',
@@ -52,38 +40,13 @@ export const MENU: MenuItem[] = [
             label: 'MENUITEMS.APPS.LIST.CHECKOUT',
             link: '/ecommerce/checkout',
             parentId: 12
-          }
-        ]
-      },
-      {
-        id: 42,
-        label: 'MENUITEMS.APPS.LIST.INVOICES',
-        parentId: 8,
-        subItems: [
-          {
-            id: 43,
-            label: 'MENUITEMS.APPS.LIST.LISTVIEW',
-            link: '/invoices/list',
-            parentId: 42
-          },
-          {
-            id: 44,
-            label: 'MENUITEMS.APPS.LIST.DETAILS',
-            link: '/invoices/details',
-            parentId: 42
-          },
-          {
-            id: 45,
-            label: 'MENUITEMS.APPS.LIST.CREATEINVOICE',
-            link: '/invoices/create',
-            parentId: 42
           }
         ]
       },
     ]
   },
 ];
-export const MENUADMIN: MenuItem[] = [
+export const MENUADMINSUPERADMIN: MenuItem[] = [
   {
     id: 1,
     label: 'MENUITEMS.MENU.TEXT',
@@ -135,6 +98,18 @@ export const MENUADMIN: MenuItem[] = [
             label: 'MENUITEMS.APPS.LIST.CHECKOUT',
             link: '/ecommerce/checkout',
             parentId: 12
+          },
+          {
+            id: 20,
+            label: 'Devoluciones',
+            link: '/',
+            parentId: 12
+          },
+          {
+            id: 20,
+            label: 'Registro de devoluciones',
+            link: '/',
+            parentId: 12
           }
         ]
       },
@@ -165,52 +140,6 @@ export const MENUADMIN: MenuItem[] = [
       },
     ]
   },
-  // CONFIGURACIÓN
-  
-  {
-    id: 54,
-    label: 'MENUITEMS.PAGES.TEXT',
-    isTitle: true
-  },
-  {
-    id: 55,
-    label: 'MENUITEMS.AUTHENTICATION.TEXT',
-    icon: 'users',
-    subItems: [
-      {
-        id: 62,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.PASSWORDRESET',
-        link: '/auth/pass-reset/cover',
-        parentId: 55
-      },
-    ]
-  },
-  {
-    id: 82,
-    label: 'MENUITEMS.PAGES.TEXT',
-    icon: 'command',
-    subItems: [
-      {
-        id: 87,
-        label: 'MENUITEMS.PAGES.LIST.TEAM',
-        link: '/pages/team',
-        parentId: 82
-      },
-      {
-        id: 88,
-        label: 'DEVICES',
-        link: '/pages/device',
-        parentId: 82
-      },
-      {
-        id: 89,
-        label: 'LOGBOOK',
-        link: '/pages/logbook',
-        parentId: 82
-      },
-    ]
-  },
-
 ];
 
 export const MENUSUPER: MenuItem[] = [
@@ -264,6 +193,18 @@ export const MENUSUPER: MenuItem[] = [
             id: 20,
             label: 'MENUITEMS.APPS.LIST.CHECKOUT',
             link: '/ecommerce/checkout',
+            parentId: 12
+          },
+          {
+            id: 20,
+            label: 'Devoluciones',
+            link: '/',
+            parentId: 12
+          },
+          {
+            id: 20,
+            label: 'Registro de devoluciones',
+            link: '/',
             parentId: 12
           }
         ]
