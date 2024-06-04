@@ -24,6 +24,8 @@ import { StarterComponent } from './starter/starter.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { TeamComponent } from './team/team.component';
+import { DeviceComponent } from './device/device.component';
+import { LogbooksComponent } from './logbook/logbooks.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { PricingComponent } from './pricing/pricing.component';
@@ -39,6 +41,8 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
     ProfileComponent,
     SettingsComponent,
     TeamComponent,
+    DeviceComponent,
+    LogbooksComponent,
     TimelineComponent,
     FaqsComponent,
     PricingComponent,
