@@ -7,4 +7,6 @@ export interface Cart {
   quantity: number;
   total: string;
   id: string;
+  rating?: any;
+  status?: any;
 }

@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
 
   decrement(event: any, id: any) {
     this.counter = (document.getElementById('cart-' + id) as HTMLInputElement).value;
-    if (this.counter > 1) {
+    if (this.counter > 0) {
       this.counter--;
       (document.getElementById('cart-' + id) as HTMLInputElement).value = this.counter;
 
@@ -86,21 +86,9 @@ export class CartComponent implements OnInit {
     }
   }
 
-  discountRate = 0.15;
-  taxRate = 0.125;
-  shippingRate = 65.0;
   updateQuantity(subTotal: any) {
-    // Discount
-    var discount = parseFloat(subTotal) * this.discountRate;
-    (document.getElementById('cart-discount') as HTMLInputElement).innerHTML = discount.toFixed(2);
-    // Shipping
-    var shipping = parseFloat(subTotal) > 0 ? this.shippingRate : 0;
-    (document.getElementById('cart-shipping') as HTMLInputElement).innerHTML = shipping.toFixed(2);
-    // Rate 
-    var tax = parseFloat(subTotal) * this.taxRate;
-    (document.getElementById('cart-tax') as HTMLInputElement).innerHTML = tax.toFixed(2);
-    // Total
-    var total = parseFloat(subTotal) + tax + shipping - discount;
+
+    var total = parseFloat(subTotal);
     (document.getElementById('cart-total') as HTMLInputElement).innerHTML = total.toFixed(2);
   }
 
