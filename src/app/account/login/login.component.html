@@ -38,7 +38,7 @@
                           </div>
                           <div class="p-2 mt-4">
                               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
+<!-- 
                                   <div class="mb-3">
                                     <label class="form-label" for="username">Email</label>
                                     <input type="email" class="form-control" id="email" formControlName="email"
@@ -47,6 +47,30 @@
                                     <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                                         <div *ngIf="f['email'].errors['required']">Email is required</div>
                                         <div *ngIf="f['email'].errors['email']">Email must be a valid email address
+                                        </div>
+                                    </div>
+                                  </div> -->
+
+                                  <div class="mb-3">
+                                    <label class="form-label" for="username">Code</label>
+                                    <input type="code" class="form-control" id="code" formControlName="code"
+                                    [ngClass]="{ 'is-invalid': submitted && f['code'].errors }"
+                                    placeholder="Enter code">
+                                    <div *ngIf="submitted && f['code'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['code'].errors['required']">Code is required</div>
+                                        <div *ngIf="f['code'].errors['code']">Code must be a valid code address
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label class="form-label" for="username">Identifier</label>
+                                    <input type="identifier" class="form-control" id="identifier" formControlName="identifier"
+                                    [ngClass]="{ 'is-invalid': submitted && f['identifier'].errors }"
+                                    placeholder="Enter identifier">
+                                    <div *ngIf="submitted && f['identifier'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['identifier'].errors['required']">Identifier is required</div>
+                                        <div *ngIf="f['identifier'].errors['identifier']">Identifier must be a valid code address
                                         </div>
                                     </div>
                                   </div>

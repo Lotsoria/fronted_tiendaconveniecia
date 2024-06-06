@@ -38,7 +38,6 @@ export class SidebarComponent implements OnInit {
     } else if (typeUser === "cashier" || typeUser === "admin") {
       this.menuItems = MENUCASHIERADMIN;
     }
-    console.log(this.menuItems);
     this.router.events.subscribe((event) => {
       if (document.documentElement.getAttribute("data-layout") != "twocolumn") {
         if (event instanceof NavigationEnd) {
