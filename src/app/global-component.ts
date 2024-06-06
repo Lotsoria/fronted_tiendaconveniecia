@@ -5,7 +5,8 @@ export const GlobalComponent = {
 
     // Auth Api
     // AUTH_API:"https://api-node.themesbrand.website/auth/",
-    AUTH_API:"http://localhost:8081/auth/",
+    // AUTH_API:"http://localhost:8081/",
+    AUTH_API:"https://tienda.aknowledgejourney.com/",
 
     // Products Api
     product:'apps/product',

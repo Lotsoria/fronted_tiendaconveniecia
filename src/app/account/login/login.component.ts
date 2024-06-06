@@ -3,11 +3,10 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 
 // Login Auth
-import { environment } from "../../../environments/environment";
 import { AuthenticationService } from "../../core/services/auth.service";
 import { AuthfakeauthenticationService } from "../../core/services/authfake.service";
-import { first } from "rxjs/operators";
 import { ToastService } from "./toast-service";
+import { Code } from "angular-feather/icons";
 
 @Component({
   selector: "app-login",
@@ -50,8 +49,9 @@ export class LoginComponent implements OnInit {
      * Form Validatyion
      */
     this.loginForm = this.formBuilder.group({
-      email: ["admin@themesbrand.com", [Validators.required, Validators.email]],
-      password: ["123456", [Validators.required]],
+      code: ["abc123", [Validators.required]],
+      identifier: ["64dvV9pCmIXjdlr", [Validators.required]],
+      password: ["qwerty", [Validators.required]],
     });
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
@@ -81,23 +81,18 @@ export class LoginComponent implements OnInit {
     // });
 
     this.authenticationService
-      .login(this.f["email"].value, this.f["password"].value)
+      .login(this.f["code"].value, this.f["password"].value, this.f["identifier"].value)
       .subscribe((data: any) => {
-        if (data) {
-          console.log(data);
+        if (data.success == true) {
           const currentUser = {
-            _id: data.id,
-            city: data.country,
-            first_name: data.firstname,
-            last_name: data.lastname,
-            name: data.firstname,
-            restriction: data.role,
-            role: data.role,
+            first_name: data.name,
+            name: data.name,
+            restriction: data.restriction,
+            role: data.restriction,
           };
           localStorage.setItem("toast", "true");
-          localStorage.setItem("rol", data.role);
+          localStorage.setItem("rol", data.restriction);
           localStorage.setItem("currentUser", JSON.stringify(currentUser));
-          localStorage.setItem("token", data.token);
           this.router.navigate(["/"]);
         } else {
           this.toastService.show(data.data, {

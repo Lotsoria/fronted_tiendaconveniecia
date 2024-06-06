@@ -1,15 +1,11 @@
 import { Injectable } from "@angular/core";
-import { getFirebaseBackend } from "../../authUtils";
-import { User } from "../models/auth.models";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { BehaviorSubject, map, Observable, tap } from "rxjs";
 import { GlobalComponent } from "../../global-component";
+import { User } from "../models/auth.models";
+import { getFirebaseBackend } from "src/app/authUtils";
 
 const AUTH_API = GlobalComponent.AUTH_API;
-
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" }),
-};
 
 @Injectable({ providedIn: "root" })
 
@@ -33,12 +29,6 @@ export class AuthenticationService {
    * @param password password
    */
   register(email: string, first_name: string, password: string) {
-    // return getFirebaseBackend()!.registerUser(email, password).then((response: any) => {
-    //     const user = response;
-    //     return user;
-    // });
-
-    // Register Api
     return this.http.post(
       AUTH_API + "signup",
       {
@@ -46,7 +36,9 @@ export class AuthenticationService {
         first_name,
         password,
       },
-      httpOptions
+      {
+        headers: new HttpHeaders({ "Content-Type": "application/json" }),
+      }
     );
   }
 
@@ -55,30 +47,29 @@ export class AuthenticationService {
    * @param email email of user
    * @param password password of user
    */
-//   login(email: string, password: string) {
-//       // return getFirebaseBackend()!.loginUser(email, password).then((response: any) => {
-//       //     const user = response;
-//       //     return user;
-//       // });
+  login(code: string, password: string, identifier: string) {
+    console.log(code, password, identifier);
+    return this.http
+      .post<HttpResponse<any>>(
+        AUTH_API + "/security/sign_in",
+        {
+          code,
+          password,
+          identifier,
+        },
+        {
+          observe: "response", // Asegúrate de observar la respuesta completa
+        }
+      )
+      .pipe(
+        map((response: HttpResponse<any>) => {
+          localStorage.setItem('token', response.headers.get("Authorization")!);
 
-//       const data =  this.http.post(AUTH_API + 'signin', {
-//           email,
-//           password
-//         }, httpOptions);
-//       console.log(data);
-//       return data;
-//   }
-  login(username: string, password: string) {
-    const data = this.http.post(
-      AUTH_API + "login",
-      {
-        username,
-        password,
-      },
-      httpOptions
-    );
-    console.log(data);
-    return data;
+          const authToken = response.headers.get("Authorization");
+          console.log("Auth Token:", authToken);
+          return { ...response.body, authToken };
+        })
+      );
   }
 
   /**
@@ -92,9 +83,8 @@ export class AuthenticationService {
    * Logout the user
    */
   logout() {
-    // logout the user
-    // return getFirebaseBackend()!.logout();
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("rol");
     localStorage.removeItem("token");
     this.currentUserSubject.next(null!);
   }
