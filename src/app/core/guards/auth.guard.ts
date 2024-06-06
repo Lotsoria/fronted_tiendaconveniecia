@@ -56,7 +56,7 @@ export class AuthGuardAdmin {
     const role = localStorage.getItem("rol");
 
     if (token) {
-      if (role === "ADMIN") {
+      if (role === "admin") {
         return true;
       } else {
         // User is logged in but does not have the USER role
@@ -124,7 +124,7 @@ export class AuthGuardAdminSuper {
     const role = localStorage.getItem("rol");
 
     if (token) {
-      if (role === "superadmin" || role === "admin" ) {
+      if (role === "super" || role === "admin" ) {
         return true;
       } else {
         // User is logged in but does not have the USER role
@@ -157,7 +157,7 @@ export class AuthGuardSuperAdmin {
     const role = localStorage.getItem("rol");
 
     if (token) {
-      if (role === "superadmin") {
+      if (role === "super") {
         return true;
       } else {
         // User is logged in but does not have the USER role

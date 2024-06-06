@@ -3,7 +3,7 @@
  */
  export interface teamModel {
   id: any;
-  backgroundImg: string;
+  backgroundImg?: string;
   userImage?: any;
   userShortName?: any;
   name: string;
