@@ -30,7 +30,7 @@
 
                       <div class="input-step">
                         <button type="button" class="minus" (click)="decrement($event,data.id)">–</button>
-                        <input type="number" class="product-quantity" id="cart-{{data.id}}" value="{{data.quantity}}" min="0" max="100">
+                        <input type="number" class="product-quantity" id="cart-{{data.id}}" value="{{data.units}}" min="0" max="100">
                         <button type="button" class="plus" (click)="increment($event,data.id)">+</button>
                     </div>
                   </div>
