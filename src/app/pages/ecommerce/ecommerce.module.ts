@@ -47,7 +47,8 @@ import {DatePipe} from '@angular/common';
 import {NgbdcustomerSortableHeader} from './customers/customers-sortable.directive';
 import { NgbdOrdersSortableHeader} from './orders/orders-sortable.directive';
 import{NgbdProductsSortableHeader} from './products/products-sortable.directive';
-import{NgbdSellerSortableHeader} from './seller-details/seller-details-sortable.directive'
+import{NgbdSellerSortableHeader} from './seller-details/seller-details-sortable.directive';
+import { FoodsComponent } from './foods/foods.component'
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
@@ -71,6 +72,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgbdOrdersSortableHeader,
     NgbdSellerSortableHeader,
     NgbdcustomerSortableHeader,
+    FoodsComponent,
   ],
   imports: [
     CommonModule,
