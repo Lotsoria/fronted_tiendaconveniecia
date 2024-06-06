@@ -31,6 +31,7 @@ export class TeamComponent {
   submitted = false;
   teamForm!: FormGroup;
   term: any;
+  message: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -53,10 +54,11 @@ export class TeamComponent {
      */
     this.teamForm = this.formBuilder.group({
       _id: [""],
+      code: ["", [Validators.required]],
       name: ["", [Validators.required]],
-      jobPosition: ["", [Validators.required]],
-      projectCount: ["", [Validators.required]],
-      taskCount: ["", [Validators.required]],
+      rolId: ["", [Validators.required]],
+      password: ["", [Validators.required]],
+      confirmPassword: ["", [Validators.required]],
     });
     this.userService.getAll().subscribe((data) => {
       this.Team = data.list.map((user: any) => ({
@@ -86,11 +88,11 @@ export class TeamComponent {
   openModal(content: any) {
     this.submitted = false;
     this.teamForm = this.formBuilder.group({
-      _id: [""],
-      name: [""],
-      jobPosition: [""],
-      projectCount: [""],
-      taskCount: [""],
+      code: ["", [Validators.required]],
+      name: ["", [Validators.required]],
+      rolId: ["", [Validators.required]],
+      password: ["", [Validators.required]],
+      confirmPassword: ["", [Validators.required]],
     });
     this.modalService.open(content, { size: "md", centered: true });
   }
@@ -107,33 +109,32 @@ export class TeamComponent {
    */
   saveTeam() {
     if (this.teamForm.valid) {
-      if (this.teamForm.get("_id")?.value) {
-        this.Team = Team.map((order: { id: any }) =>
-          order.id === this.teamForm.get("_id")?.value
-            ? { ...order, ...this.teamForm.value }
-            : order
-        );
-        this.modalService.dismissAll();
-      } else {
-        const id = "10";
-        const backgroundImg = "assets/images/small/img-6.jpg";
-        const userImage = null;
-        const name = this.teamForm.get("name")?.value;
-        const jobPosition = this.teamForm.get("jobPosition")?.value;
-        const projectCount = this.teamForm.get("projectCount")?.value;
-        const taskCount = this.teamForm.get("taskCount")?.value;
-        this.Team.push({
-          id,
-          backgroundImg,
-          userImage,
-          name,
-          jobPosition,
-          projectCount,
-          taskCount,
-        });
-        this.modalService.dismissAll();
+      if (this.teamForm.value.password != this.teamForm.value.confirmPassword) {
+        this.message = "Las contraseñas no coinciden";
+        console.log("las contraseñas no coinciden");
+        return;
       }
-      this.submitted = true;
+      const newUserData = {
+        code: this.teamForm.value.code,
+        name: this.teamForm.value.name,
+        rolId: this.teamForm.value.rolId,
+        password: this.teamForm.value.password,
+      };
+      
+      this.userService.register(newUserData).subscribe({
+        next: (data) => {
+          this.message = "Usuario creado correctamente";
+        },
+        complete: () => {
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        },
+        error: (error) => {
+          this.message = "Error al crear usuario";
+        }
+      });
+
     }
   }
 

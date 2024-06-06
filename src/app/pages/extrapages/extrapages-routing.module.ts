@@ -27,7 +27,7 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'profile-setting',
+    path: 'profile-setting/:id',
     component: SettingsComponent
   },
   {
