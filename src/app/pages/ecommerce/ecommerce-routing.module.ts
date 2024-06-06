@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Component pages
 import { ProductsComponent } from "./products/products.component";
+import { FoodsComponent } from './foods/foods.component';
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { AddProductComponent } from "./add-product/add-product.component";
 import { OrdersComponent } from "./orders/orders.component";
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: "products",
     component: ProductsComponent,
+    canActivate: [AuthGuardCashierAdmin],
+  },
+  {
+    path: "foods",
+    component: FoodsComponent,
     canActivate: [AuthGuardCashierAdmin],
   },
   {

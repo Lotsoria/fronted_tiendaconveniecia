@@ -25,6 +25,12 @@ export const MENUCASHIERADMIN: MenuItem[] = [
           },
           {
             id: 14,
+            label: 'MENUITEMS.APPS.LIST.FOODS',
+            link: '/ecommerce/foods',
+            parentId: 12
+          },
+          {
+            id: 14,
             label: 'MENUITEMS.APPS.LIST.PRODUCTDETAILS',
             link: '/ecommerce/product-detail/1',
             parentId: 12
