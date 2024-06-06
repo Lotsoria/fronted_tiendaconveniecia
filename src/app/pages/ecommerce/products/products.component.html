@@ -34,8 +34,7 @@
                 class="nav nav-tabs-custom card-header-tabs border-bottom-0">
                 <li [ngbNavItem]="1">
                   <a ngbNavLink>
-                    All <span class="badge bg-danger-subtle text-danger align-middle rounded-pill ms-1">
-                      {{totalpublish}}</span>
+                    All 
                   </a>
                   <ng-template ngbNavContent>
                     <div class="mt-3">
@@ -47,8 +46,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col" class="sort" productsortable="name" (productsort)="onSort($event)">
                                   Product</th>
-                                <th scope="col" class="sort" productsortable="stock" (productsort)="onSort($event)">
-                                  Stock</th>
                                 <th scope="col" class="sort" productsortable="price" (productsort)="onSort($event)">
                                   Price</th>
                                 <th scope="col">Action</th>
