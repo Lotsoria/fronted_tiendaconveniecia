@@ -23,7 +23,7 @@
     </div>
     <!--end card-->
   </div>
-  <!--end col-->
+
   <div class="col-xxl-9">
     <div class="card mt-xxl-n5">
       <div class="card-header">
@@ -40,9 +40,22 @@
               Personal Details
             </a>
             <ng-template ngbNavContent>
-              <form action="javascript:void(0);">
+              <form [formGroup]="dataForm" (ngSubmit)="updateData()">
                 <div class="row">
                   <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label for="firstnameInput" class="form-label"
+                        >Code</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstnameInput"
+                        placeholder="Enter your firstname"
+                        formControlName="code"
+                        value="{{ userData.code }}"
+                      />
+                    </div>
                     <div class="mb-3">
                       <label for="firstnameInput" class="form-label"
                         >Name</label
@@ -52,91 +65,39 @@
                         class="form-control"
                         id="firstnameInput"
                         placeholder="Enter your firstname"
-                        value="{{ userData.first_name }}"
+                        formControlName="name"
+                        value="{{ userData.name }}"
                       />
                     </div>
+                    <div class="mb-3">
+                      <label for="firstnameInput" class="form-label"
+                        >Roll</label
+                      >
+                      <select
+                      class="form-control"
+                      id="roleSelect"
+                      formControlName="rol"
+                      [value]="userData.rol"
+                    >
+                      <option *ngFor="let role of roles" [value]="role.id">{{ role.value }}</option>
+                    </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="statusSelect" class="form-label">Estado</label>
+                      <select
+                        class="form-control"
+                        id="statusSelect"
+                        formControlName="status"
+                      >
+                        <option value="true">Activo</option>
+                        <option value="false">Inactivo</option>
+                      </select>
+                    </div>
                   </div>
-                  <!--end col-->
-                  <!-- <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="lastnameInput" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="lastnameInput"
-                                                placeholder="Enter your lastname" value="{{userData.last_name}}">
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="phonenumberInput" class="form-label">Phone Number</label>
-                                            <input type="text" class="form-control" id="phonenumberInput"
-                                                placeholder="Enter your phone number" value="{{userData.phone}}">
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="emailInput" class="form-label">Email Address</label>
-                                            <input type="email" class="form-control" id="emailInput"
-                                                placeholder="Enter your email" value="{{userData.email}}">
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label for="JoiningdatInput" class="form-label">Joining Date</label>
-                                            <input class="form-control flatpickr-input" type="text"
-                                                placeholder="Select date" mwlFlatpickr [altInput]="true"
-                                                [convertModelValue]="true" value="{{userData.joining_date}}">
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label for="skillsInput" class="form-label">Skills</label>
-                                            <ng-select [items]="selectValue" [multiple]="true"></ng-select>
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="designationInput" class="form-label">Designation</label>
-                                            <input type="text" class="form-control" id="designationInput"
-                                                placeholder="Designation" value="{{userData.designation}}">
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="websiteInput1" class="form-label">Website</label>
-                                            <input type="text" class="form-control" id="websiteInput1"
-                                                placeholder="www.example.com" value="{{userData.website}}" />
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="cityInput" class="form-label">City</label>
-                                            <input type="text" class="form-control" id="cityInput" placeholder="City"
-                                                value="{{userData.city}}" />
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="countryInput" class="form-label">Country</label>
-                                            <input type="text" class="form-control" id="countryInput"
-                                                placeholder="Country" value="{{userData.country}}" />
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="zipcodeInput" class="form-label">Zip Code</label>
-                                            <input type="text" class="form-control" minlength="5" maxlength="6"
-                                                id="zipcodeInput" placeholder="Enter zipcode"
-                                                value="{{userData.zipcode}}">
-                                        </div>
-                                    </div> -->
-                  <!-- <div class="col-lg-12">
-                                        <div class="mb-3 pb-2">
-                                            <label for="exampleFormControlTextarea"
-                                                class="form-label">Description</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea"
-                                                placeholder="Enter your description"
-                                                rows="3">{{userData.description}}</textarea>
-                                        </div>
-                                    </div> -->
+                  <div *ngIf="message" class="alert alert-info">
+                    {{ message }}
+                  </div>
                   <div class="col-lg-12">
                     <div class="hstack gap-2 justify-content-end">
                       <button type="submit" class="btn btn-primary">
@@ -147,68 +108,6 @@
                       </button>
                     </div>
                   </div>
-                  <!--end col-->
-                </div>
-                <!--end row-->
-              </form>
-            </ng-template>
-          </li>
-          <li [ngbNavItem]="2" class="nav-item">
-            <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
-              <i class="far fa-user"></i>
-              Change Password
-            </a>
-            <ng-template ngbNavContent>
-              <form [formGroup]="changePassForm">
-                <div class="row g-2">
-                  <div class="col-lg-4">
-                    <div>
-                      <label for="newpasswordInput" class="form-label"
-                        >New Password*</label
-                      >
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="newpasswordInput"
-                        placeholder="Enter new password"
-                        formControlName="newPass"
-                      />
-                    </div>
-                  </div>
-                  <!--end col-->
-                  <div class="col-lg-4">
-                    <div>
-                      <label for="confirmpasswordInput" class="form-label"
-                        >Confirm Password*</label
-                      >
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="confirmpasswordInput"
-                        placeholder="Confirm password"
-                        formControlName="confirmPass"
-                      />
-                    </div>
-                  </div>
-                  <!--end col-->
-                  <!-- <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <a href="javascript:void(0);"
-                                                class="link-primary text-decoration-underline">Forgot Password ?</a>
-                                        </div>
-                                    </div> -->
-                  <div class="col-lg-12">
-                    <div class="text-end">
-                      <button
-                        type="submit"
-                        class="btn btn-success"
-                        (click)="changePass()"
-                      >
-                        Change Password
-                      </button>
-                    </div>
-                  </div>
-                  <!--end col-->
                 </div>
                 <!--end row-->
               </form>
@@ -223,6 +122,5 @@
       </div>
     </div>
   </div>
-  <!--end col-->
 </div>
 <!--end row-->

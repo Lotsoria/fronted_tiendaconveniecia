@@ -89,6 +89,7 @@ export class LoginComponent implements OnInit {
             name: data.name,
             restriction: data.restriction,
             role: data.restriction,
+            code: data.code,
           };
           localStorage.setItem("toast", "true");
           localStorage.setItem("rol", data.restriction);

@@ -59,13 +59,14 @@
 
                                     <div class="p-2">
                                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
                                             <div class="mb-3">
                                                 <label class="form-label" for="old-password-input">Old Password</label>
                                                 <div class="position-relative auth-pass-inputgroup">
                                                     <input [type]="passwordField ? 'text' : 'password'" class="form-control pe-5 password-input" 
                                                         placeholder="Enter password" id="old-password-input" aria-describedby="passwordInput"
-                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="opassword"
-                                                        [ngClass]="{ 'is-invalid': submitted && f['opassword'].errors }">
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="oldPassword"
+                                                        [ngClass]="{ 'is-invalid': submitted && f['oldPassword'].errors }">
                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
                                                         type="button" id="old-password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
                                                     }" (click)="togglepasswordField()"></i></button>
@@ -77,13 +78,13 @@
                                                 <div class="position-relative auth-pass-inputgroup">
                                                     <input [type]="passwordField ? 'text' : 'password'" class="form-control pe-5 password-input" 
                                                         placeholder="Enter password" id="password-input" aria-describedby="passwordInput"
-                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="password"
-                                                        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="newPassword"
+                                                        [ngClass]="{ 'is-invalid': submitted && f['newPassword'].errors }">
                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
                                                         type="button" id="password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
                                                     }" (click)="togglepasswordField()"></i></button>
-                                                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                                                        <span *ngIf="f['password'].errors['required']">Password is required</span>
+                                                    <div *ngIf="submitted && f['newPassword'].errors" class="invalid-feedback">
+                                                        <span *ngIf="f['newPassword'].errors['required']">Password is required</span>
                                                       </div>
                                                 </div>
                                                 <div id="passwordInput" class="form-text">Must be at least 8 characters.</div>
@@ -94,16 +95,19 @@
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
                                                     <input [type]="confirmField ? 'text' : 'password'" class="form-control pe-5 password-input"
                                                         placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirm-password-input"
-                                                        required formControlName="cpassword"
-                                                        [ngClass]="{ 'is-invalid': submitted && f['cpassword'].errors }">
+                                                        required formControlName="confirmPassword"
+                                                        [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
                                                         type="button" id="confirm-password-input"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
                                                     }" (click)="toggleconfirmField()"></i></button>
-                                                    <div *ngIf="submitted && f['cpassword'].errors" class="invalid-feedback">
-                                                        <span *ngIf="f['cpassword'].errors['required']">Confirm Password is required</span>
+                                                    <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                                                        <span *ngIf="f['confirmPassword'].errors['required']">Confirm Password is required</span>
                                                       </div>
                                                 </div>
                                             </div>
+                                            
+                                            
+
 
                                             <div id="password-contain" class="p-3 bg-light mb-2 rounded">
                                                 <h5 class="fs-13">Password must contain:</h5>
@@ -112,7 +116,9 @@
                                                 <p id="pass-upper" class="invalid fs-12 mb-2">At least <b>uppercase</b> letter (A-Z)</p>
                                                 <p id="pass-number" class="invalid fs-12 mb-0">A least <b>number</b> (0-9)</p>
                                             </div>
-                                    
+                                            <div class="mt-5 text-center" *ngIf="validatePassword">
+                                                <label class="mb-0" for="auth-remember-check">{{message}}</label>
+                                            </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
                                                 <label class="form-check-label" for="auth-remember-check">Remember me</label>

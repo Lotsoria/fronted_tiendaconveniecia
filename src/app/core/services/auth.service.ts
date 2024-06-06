@@ -63,7 +63,7 @@ export class AuthenticationService {
       )
       .pipe(
         map((response: HttpResponse<any>) => {
-          localStorage.setItem('token', response.headers.get("Authorization")!);
+          localStorage.setItem("token", response.headers.get("Authorization")!);
 
           const authToken = response.headers.get("Authorization");
           console.log("Auth Token:", authToken);
@@ -102,7 +102,21 @@ export class AuthenticationService {
   //     });
   // }
 
-  resetPassword(email: string) {
-    return this.http.post(AUTH_API + "reset-password", { email });
+  resetPassword(oldPassword: string, newPassword: string) {
+    const token = localStorage.getItem("token");
+    return this.http.put(
+      AUTH_API + "security/change_password",
+      {
+        oldPassword,
+        newPassword,
+      },
+
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        }),
+      }
+    );
   }
 }
