@@ -25,7 +25,7 @@ export const MENUCASHIERADMIN: MenuItem[] = [
           },
           {
             id: 14,
-            label: 'MENUITEMS.APPS.LIST.FOODS',
+            label: 'Foods',
             link: '/ecommerce/foods',
             parentId: 12
           },

@@ -1,35 +1,43 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-import { Observable } from 'rxjs';
-import { NgbModal, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, UntypedFormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { Component, QueryList, ViewChildren } from "@angular/core";
+import { DecimalPipe } from "@angular/common";
+import { Observable } from "rxjs";
+import { NgbModal, NgbNavChangeEvent } from "@ng-bootstrap/ng-bootstrap";
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  FormArray,
+  FormControl,
+  Validators,
+} from "@angular/forms";
 // Range Slider
-import { Options } from 'ngx-slider-v2';
+import { Options } from "ngx-slider-v2";
 
 // Sweet Alert
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
-import { productModel } from './products.model';
-import { AdvancedService } from './products.service';
-import { NgbdProductsSortableHeader, productSortEvent } from './products-sortable.directive';
+import { productModel } from "./products.model";
+import { AdvancedService } from "./products.service";
+import {
+  NgbdProductsSortableHeader,
+  productSortEvent,
+} from "./products-sortable.directive";
 
 // Products Services
 import { restApiService } from "../../../core/services/rest-api.service";
-import { GlobalComponent } from '../../../global-component';
-import { Router } from '@angular/router';
+import { GlobalComponent } from "../../../global-component";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
-  providers: [AdvancedService, DecimalPipe]
+  selector: "app-products",
+  templateUrl: "./products.component.html",
+  styleUrls: ["./products.component.scss"],
+  providers: [AdvancedService, DecimalPipe],
 })
 
 /**
  * Products Components
  */
 export class ProductsComponent {
-
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
@@ -48,7 +56,7 @@ export class ProductsComponent {
   allproduct: any;
 
   allproducts: any;
-  activeindex = '1';
+  activeindex = "1";
   allpublish: any;
   grocery: any = 0;
   fashion: any = 0;
@@ -64,16 +72,18 @@ export class ProductsComponent {
   productList!: Observable<productModel[]>;
   allproductList!: Observable<productModel[]>;
   total$: Observable<number>;
-  @ViewChildren(NgbdProductsSortableHeader) headers!: QueryList<NgbdProductsSortableHeader>;
+  @ViewChildren(NgbdProductsSortableHeader)
+  headers!: QueryList<NgbdProductsSortableHeader>;
   searchproducts: any;
   publishedproduct: any;
 
-
-  constructor(private modalService: NgbModal,
+  constructor(
+    private modalService: NgbModal,
     private router: Router,
     public service: AdvancedService,
     private formBuilder: UntypedFormBuilder,
-    public restApiService: restApiService) {
+    public restApiService: restApiService,
+  ) {
     this.productList = service.countries$;
     this.allproductList = service.allproduct$;
     this.total$ = service.total$;
@@ -81,63 +91,16 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     /**
-    * BreadCrumb
-    */
+     * BreadCrumb
+     */
     this.breadCrumbItems = [
-      { label: 'Ecommerce' },
-      { label: 'Products', active: true }
+      { label: "Ecommerce" },
+      { label: "Products", active: true },
     ];
 
-
-    /**
-     * fetches data
-     */
-    setTimeout(() => {
-      this.productList.subscribe(x => {
-        this.content = this.products;
-        this.products = Object.assign([], x);
-      });
-
-      this.allproductList.subscribe(x => {
-        this.allproducts = Object.assign([], x);
-      });
-      document.getElementById('elmLoader')?.classList.add('d-none')
-    }, 1000)
-
-    setTimeout(() => {
-      for (var i = 0; i < this.allproducts.length; i++) {
-        if (this.allproducts[i].category == 'Kitchen Storage & Containers') {
-          this.grocery += 1
-        }
-        if (this.allproducts[i].category == 'Clothes') {
-          this.fashion += 1
-        }
-        if (this.allproducts[i].category == 'Watches') {
-          this.watches += 1
-        } if (this.allproducts[i].category == 'Electronics') {
-          this.electronics += 1
-        } if (this.allproducts[i].category == 'Furniture') {
-          this.furniture += 1
-        } if (this.allproducts[i].category == 'Bike Accessories') {
-          this.accessories += 1
-        }
-        if (this.allproducts[i].category == 'Tableware & Dinnerware') {
-          this.appliance += 1
-        }
-        if (this.allproducts[i].category == 'Bags, Wallets and Luggage') {
-          this.kids += 1
-        }
-        if (this.allproducts[i].status == 'published') {
-          this.totalpublish += 1
-        }
-      }
-    }, 2000);
-
-    /**
-   * Form Validation
-   */
-    this.contactsForm = this.formBuilder.group({
-      subItem: this.formBuilder.array([]),
+    this.service.getProduct().subscribe((data) => {
+      console.log("productos -> ",data);
+      this.products = data.list;
     });
   }
 
@@ -154,33 +117,33 @@ export class ProductsComponent {
   // }
 
   /**
-* change navigation
-*/
+   * change navigation
+   */
   onNavChange(changeEvent: NgbNavChangeEvent) {
     if (changeEvent.nextId === 1) {
-      this.activeindex = '1'
-      this.service.productStatus = ''
+      this.activeindex = "1";
+      this.service.productStatus = "";
     }
     if (changeEvent.nextId === 2) {
-      this.activeindex = '2'
-      this.service.productStatus = 'published'
+      this.activeindex = "2";
+      this.service.productStatus = "published";
     }
     if (changeEvent.nextId === 3) {
-      this.activeindex = '3'
-      this.service.productStatus = ''
+      this.activeindex = "3";
+      this.service.productStatus = "";
     }
   }
 
   /**
-  * Sort table data
-  * @param param0 sort the column
-  *
-  */
+   * Sort table data
+   * @param param0 sort the column
+   *
+   */
   onSort({ column, direction }: productSortEvent) {
     // resetting other headers
-    this.headers.forEach(header => {
+    this.headers.forEach((header) => {
       if (header.productsortable !== column) {
-        header.direction = '';
+        header.direction = "";
       }
     });
 
@@ -189,8 +152,8 @@ export class ProductsComponent {
   }
 
   /**
-  * Delete Model Open
-  */
+   * Delete Model Open
+   */
   deleteId: any;
   confirm(content: any, id: any) {
     this.deleteId = id;
@@ -201,18 +164,19 @@ export class ProductsComponent {
   deleteData(id: any) {
     if (id) {
       this.restApiService.deleteData(id).subscribe({
-        next: data => { },
-        error: err => {
+        next: (data) => {},
+        error: (err) => {
           this.content = JSON.parse(err.error).message;
-        }
+        },
       });
-      document.getElementById('p_' + id)?.remove();
-    }
-    else {
+      document.getElementById("p_" + id)?.remove();
+    } else {
       this.checkedValGet.forEach((item: any) => {
-        document.getElementById('p_' + item)?.remove();
+        document.getElementById("p_" + item)?.remove();
       });
-      (document.getElementById("selection-element") as HTMLElement).style.display = "none"
+      (
+        document.getElementById("selection-element") as HTMLElement
+      ).style.display = "none";
     }
   }
 
@@ -221,62 +185,66 @@ export class ProductsComponent {
   maxValue = 1000;
   options: Options = {
     floor: 0,
-    ceil: 1000
+    ceil: 1000,
   };
 
   /**
    * Default Select2
    */
-  multiDefaultOption = 'Watches';
-  selectedAccount = 'This is a placeholder';
-  Default = [
-    { name: 'Watches' },
-    { name: 'Headset' },
-    { name: 'Sweatshirt' },
-  ];
+  multiDefaultOption = "Watches";
+  selectedAccount = "This is a placeholder";
+  Default = [{ name: "Watches" }, { name: "Headset" }, { name: "Sweatshirt" }];
 
   // Check Box Checked Value Get
   checkedValGet: any[] = [];
   // Select Checkbox value Get
   onCheckboxChange(e: any) {
-    var checkboxes: any = document.getElementsByName('checkAll');
+    var checkboxes: any = document.getElementsByName("checkAll");
     var checkedVal: any[] = [];
-    var result
+    var result;
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
         result = checkboxes[i].value;
         checkedVal.push(result);
       }
     }
-    this.checkedValGet = checkedVal
-    var checkBoxCount: any = document.getElementById('select-content') as HTMLElement;
+    this.checkedValGet = checkedVal;
+    var checkBoxCount: any = document.getElementById(
+      "select-content"
+    ) as HTMLElement;
     checkBoxCount.innerHTML = checkedVal.length;
-    checkedVal.length > 0 ? (document.getElementById("selection-element") as HTMLElement).style.display = "block" : (document.getElementById("selection-element") as HTMLElement).style.display = "none";
+    checkedVal.length > 0
+      ? ((
+          document.getElementById("selection-element") as HTMLElement
+        ).style.display = "block")
+      : ((
+          document.getElementById("selection-element") as HTMLElement
+        ).style.display = "none");
   }
   /**
-    * Brand Filter
-    */
+   * Brand Filter
+   */
   changeBrand(e: any) {
     if (e.target.checked) {
-      this.Brand.push(e.target.defaultValue)
+      this.Brand.push(e.target.defaultValue);
     } else {
       for (var i = 0; i < this.Brand.length; i++) {
         if (this.Brand[i] === e.target.defaultValue) {
-          this.Brand.splice(i, 1)
+          this.Brand.splice(i, 1);
         }
       }
     }
-    this.totalbrand = this.Brand.length
+    this.totalbrand = this.Brand.length;
   }
 
   /**
-  * Discount Filter
-  */
+   * Discount Filter
+   */
   changeDiscount(e: any) {
     if (e.target.checked) {
-      this.discountRates.push(e.target.defaultValue)
+      this.discountRates.push(e.target.defaultValue);
 
-      this.productList.subscribe(x => {
+      this.productList.subscribe((x) => {
         this.products = x.filter((product: any) => {
           return product.rating > e.target.defaultValue;
         });
@@ -284,96 +252,90 @@ export class ProductsComponent {
     } else {
       for (var i = 0; i < this.discountRates.length; i++) {
         if (this.discountRates[i] === e.target.defaultValue) {
-          this.discountRates.splice(i, 1)
+          this.discountRates.splice(i, 1);
         }
       }
     }
-    this.totaldiscount = this.discountRates.length
+    this.totaldiscount = this.discountRates.length;
   }
-
 
   /**
    * Rating Filter
    */
   changeRating(e: any, rate: any) {
     if (e.target.checked) {
-      this.Rating.push(e.target.defaultValue)
+      this.Rating.push(e.target.defaultValue);
       this.service.productRate = rate;
-    }
-    else {
+    } else {
       for (var i = 0; i < this.Rating.length; i++) {
         if (this.Rating[i] === e.target.defaultValue) {
-          this.Rating.splice(i, 1)
+          this.Rating.splice(i, 1);
         }
       }
       this.service.productRate = rate;
     }
-    this.totalrate = this.Rating.length
+    this.totalrate = this.Rating.length;
   }
 
-
-
   /**
-   * Product Filtering  
+   * Product Filtering
    */
   changeProducts(e: any, name: any, category: any) {
-    const iconItems = document.querySelectorAll('.filter-list');
+    const iconItems = document.querySelectorAll(".filter-list");
     iconItems.forEach((item: any) => {
-      var el = item.querySelectorAll('a')
+      var el = item.querySelectorAll("a");
       el.forEach((item: any) => {
-        var element = item.querySelector('h5').innerHTML
+        var element = item.querySelector("h5").innerHTML;
         if (element == category) {
           item.classList.add("active");
         } else {
           item.classList.remove("active");
         }
-      })
+      });
     });
 
-    this.service.ProductFilter = name
+    this.service.ProductFilter = name;
   }
 
-
   /**
-  * Search Product
-  */
+   * Search Product
+   */
   search(value: string) {
-    if (this.activeindex == '1') {
+    if (this.activeindex == "1") {
       if (value) {
         this.products = this.allproducts.filter((val: any) =>
           val.category.toLowerCase().includes(value)
         );
         this.total = this.products.length;
       } else {
-        this.products = this.searchproducts
+        this.products = this.searchproducts;
         this.total = this.allproducts.length;
       }
-    } else if (this.activeindex == '2') {
+    } else if (this.activeindex == "2") {
       if (value) {
         this.publishedproduct = this.publishedproduct.filter((val: any) =>
           val.category.toLowerCase().includes(value)
         );
         this.total = this.publishedproduct.length;
       } else {
-        this.publishedproduct = this.allpublish
+        this.publishedproduct = this.allpublish;
         this.total = this.publishedproduct.length;
       }
     }
-
   }
 
   /**
-  * Range Slider Wise Data Filter
-  */
+   * Range Slider Wise Data Filter
+   */
   valueChange(value: number, boundary: boolean): void {
     if (value > 0 && value < 1000) {
-      if (this.activeindex == '1') {
+      if (this.activeindex == "1") {
         if (boundary) {
           this.minValue = value;
         } else {
           this.maxValue = value;
         }
-      } else if (this.activeindex == '2') {
+      } else if (this.activeindex == "2") {
         if (boundary) {
           this.minValue = value;
         } else {
@@ -386,36 +348,38 @@ export class ProductsComponent {
   clearall(ev: any) {
     this.minValue = 0;
     this.maxValue = 1000;
-    var checkboxes: any = document.getElementsByName('checkAll');
+    var checkboxes: any = document.getElementsByName("checkAll");
     for (var i = 0; i < checkboxes.length; i++) {
-      checkboxes[i].checked = false
+      checkboxes[i].checked = false;
     }
     // this.service.searchTerm = ''
     this.totalbrand = 0;
     this.totaldiscount = 0;
     this.totalrate = 0;
-    this.Brand = []
-    this.Rating = []
-    this.discountRates = []
-    const iconItems = document.querySelectorAll('.filter-list');
+    this.Brand = [];
+    this.Rating = [];
+    this.discountRates = [];
+    const iconItems = document.querySelectorAll(".filter-list");
     iconItems.forEach((item: any) => {
-      var el = item.querySelectorAll('a')
+      var el = item.querySelectorAll("a");
       el.forEach((item: any) => {
         item.classList.remove("active");
-      })
+      });
     });
-    this.service.searchTerm = '';
-    this.service.ProductFilter = '';
+    this.service.searchTerm = "";
+    this.service.ProductFilter = "";
     this.service.productRate = 0;
     this.service.productPrice = 0;
   }
 
   godetail(id: any) {
-    this.router.navigate(['/ecommerce/product-detail/1', this.products[id]])
+    this.router.navigate(["/ecommerce/product-detail/1", this.products[id]]);
   }
 
   gopublishdetail(id: any) {
-    this.router.navigate(['/ecommerce/product-detail/1', this.publishedproduct[id]])
+    this.router.navigate([
+      "/ecommerce/product-detail/1",
+      this.publishedproduct[id],
+    ]);
   }
-
 }
