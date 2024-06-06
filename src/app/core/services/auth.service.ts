@@ -93,12 +93,16 @@ export class AuthenticationService {
    * Reset password
    * @param email email
    */
+  // resetPassword(email: string) {
+  //   return getFirebaseBackend()!
+  //     .forgetPassword(email)
+  //     .then((response: any) => {
+  //       const message = response.data;
+  //       return message;
+  //     });
+  // }
+
   resetPassword(email: string) {
-    return getFirebaseBackend()!
-      .forgetPassword(email)
-      .then((response: any) => {
-        const message = response.data;
-        return message;
-      });
+    return this.http.post(AUTH_API + "reset-password", { email });
   }
 }

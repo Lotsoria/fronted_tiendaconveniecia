@@ -31,9 +31,9 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     // Menu Items
     const typeUser = localStorage.getItem("rol");
-    if (typeUser === "superadmin") {
+    if (typeUser === "super") {
       this.menuItems = MENUSUPER;
-    } else if (typeUser === "admin" || typeUser === "superadmin") {
+    } else if (typeUser === "admin" || typeUser === "super") {
       this.menuItems = MENUADMINSUPERADMIN;
     } else if (typeUser === "cashier" || typeUser === "admin") {
       this.menuItems = MENUCASHIERADMIN;
