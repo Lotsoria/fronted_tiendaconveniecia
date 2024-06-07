@@ -14,6 +14,7 @@ import { CheckoutComponent } from "./checkout/checkout.component";
 import { SellersComponent } from "./sellers/sellers.component";
 import { SellerDetailsComponent } from "./seller-details/seller-details.component";
 import { AuthGuardCashierAdmin } from 'src/app/core/guards/auth.guard';
+import { RefundsComponent } from './refunds/refunds.component';
 
 const routes: Routes = [
   {
@@ -64,7 +65,11 @@ const routes: Routes = [
   {
     path: "seller-details",
     component: SellerDetailsComponent
-  }
+  },
+  {
+    path: "refunds",
+    component: RefundsComponent
+  },
 
 ];
 
