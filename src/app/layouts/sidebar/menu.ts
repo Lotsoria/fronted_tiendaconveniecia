@@ -166,18 +166,6 @@ export const MENUSUPER: MenuItem[] = [
         parentId: 8,
         subItems: [
           {
-            id: 13,
-            label: 'MENUITEMS.APPS.LIST.PRODUCTS',
-            link: '/ecommerce/products',
-            parentId: 12
-          },
-          {
-            id: 14,
-            label: 'MENUITEMS.APPS.LIST.PRODUCTDETAILS',
-            link: '/ecommerce/product-detail/1',
-            parentId: 12
-          },
-          {
             id: 15,
             label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
             link: '/ecommerce/add-product',
