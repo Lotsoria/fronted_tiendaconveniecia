@@ -30,12 +30,6 @@ export const MENUCASHIERADMIN: MenuItem[] = [
             parentId: 12
           },
           {
-            id: 14,
-            label: 'MENUITEMS.APPS.LIST.PRODUCTDETAILS',
-            link: '/ecommerce/product-detail/1',
-            parentId: 12
-          },
-          {
             id: 19,
             label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
             link: '/ecommerce/cart',
@@ -76,21 +70,9 @@ export const MENUADMINSUPERADMIN: MenuItem[] = [
             parentId: 12
           },
           {
-            id: 14,
-            label: 'MENUITEMS.APPS.LIST.PRODUCTDETAILS',
-            link: '/ecommerce/product-detail/1',
-            parentId: 12
-          },
-          {
             id: 15,
             label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
             link: '/ecommerce/add-product',
-            parentId: 12
-          },
-          {
-            id: 18,
-            label: 'MENUITEMS.APPS.LIST.CUSTOMERS',
-            link: '/ecommerce/customers',
             parentId: 12
           },
           {
@@ -130,18 +112,6 @@ export const MENUADMINSUPERADMIN: MenuItem[] = [
             link: '/invoices/list',
             parentId: 42
           },
-          {
-            id: 44,
-            label: 'MENUITEMS.APPS.LIST.DETAILS',
-            link: '/invoices/details',
-            parentId: 42
-          },
-          {
-            id: 45,
-            label: 'MENUITEMS.APPS.LIST.CREATEINVOICE',
-            link: '/invoices/create',
-            parentId: 42
-          }
         ]
       },
     ]
@@ -172,12 +142,6 @@ export const MENUSUPER: MenuItem[] = [
             parentId: 12
           },
           {
-            id: 18,
-            label: 'MENUITEMS.APPS.LIST.CUSTOMERS',
-            link: '/ecommerce/customers',
-            parentId: 12
-          },
-          {
             id: 19,
             label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
             link: '/ecommerce/cart',
@@ -214,18 +178,6 @@ export const MENUSUPER: MenuItem[] = [
             link: '/invoices/list',
             parentId: 42
           },
-          {
-            id: 44,
-            label: 'MENUITEMS.APPS.LIST.DETAILS',
-            link: '/invoices/details',
-            parentId: 42
-          },
-          {
-            id: 45,
-            label: 'MENUITEMS.APPS.LIST.CREATEINVOICE',
-            link: '/invoices/create',
-            parentId: 42
-          }
         ]
       },
     ]

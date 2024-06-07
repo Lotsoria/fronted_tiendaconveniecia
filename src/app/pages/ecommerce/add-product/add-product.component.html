@@ -15,72 +15,32 @@
                     <div class="mb-3">
                         <label class="form-label" for="product-title-input">Product Code</label>
                         <input type="text" class="form-control" id="product-title-input"
-                            placeholder="Enter product title">
+                            placeholder="Enter product code">
                     </div>
                     <div>
                         <label>Product Description</label>
-                        <ckeditor [editor]="Editor" data="
-                        <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
-                        <ul>
-                          <li>Full Sleeve</li>
-                          <li>Cotton</li>
-                          <li>All Sizes available</li>
-                          <li>4 Different Color</li>
-                        </ul>
-                        ">
+                        <ckeditor [editor]="Editor">
                         </ckeditor>
                     </div>
-                </div>
-            </div>
-            <!-- end card -->
+                    <div class="mb-3">
+                        <label class="form-label"
+                            for="product-price-input"><br>Price</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                id="product-price-addon">Q</span>
+                            <input type="text" class="form-control"
+                                id="product-price-input" placeholder="Enter price"
+                                aria-label="Price"
+                                aria-describedby="product-price-addon">
 
-            <div class="card">
-                <div class="card-header">
-                    <ul ngbNav #customNav="ngbNav" [activeId]="1"
-                        class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
-                        <li [ngbNavItem]="1" class="nav-item">
-                            <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
-                                General Info
-                            </a>
-                            <ng-template ngbNavContent>
-                                <div class="tab-pane active" id="addproduct-general-info" role="tabpanel">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label"
-                                                            for="product-price-input">Price</label>
-                                                        <div class="input-group mb-3">
-                                                            <span class="input-group-text"
-                                                                id="product-price-addon">$</span>
-                                                            <input type="text" class="form-control"
-                                                                id="product-price-input" placeholder="Enter price"
-                                                                aria-label="Price"
-                                                                aria-describedby="product-price-addon">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end col -->
-                                    </div>
-                                    <!-- end row -->
-                                </div>
-                            </ng-template>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content pt-4">
-                        <div [ngbNavOutlet]="customNav"></div>
+                        </div>
                     </div>
                 </div>
-                <!-- end card header -->
             </div>
             <!-- end card -->
+             
             <div class="text-end mb-3">
-                <button type="submit" class="btn btn-primary w-sm">Submit</button>
+                <button type="submit" class="btn btn-primary w-sm">Create</button>
             </div>
         </form>
 
