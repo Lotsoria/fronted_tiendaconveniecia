@@ -7,17 +7,13 @@ import { CartService } from "./cart.service";
   templateUrl: "./cart.component.html",
   styleUrls: ["./cart.component.scss"],
 })
-
-/**
- * Cart Component
- */
 export class CartComponent implements OnInit {
-  // bread crumb items
   breadCrumbItems!: Array<{}>;
-  cartData!: any[];
+  cartData: any[] = [];
   deleteId: any;
   dataCount: any;
   totalAmount: number = 0;
+  selectedPaymentMethod: string = 'cash';
 
   constructor(
     private modalService: NgbModal,
@@ -25,21 +21,24 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /**
-     * BreadCrumb
-     */
     this.breadCrumbItems = [
       { label: "Ecommerce" },
       { label: "Shopping Cart", active: true },
     ];
-    this.productoService.getProduct().subscribe((data) => {
-      this.cartData = data.list.map((item: any) => {
+
+    // Consumir el endpoint para obtener los productos
+    this.productoService.getProducts().subscribe((data: any) => {
+      this.cartData = [...data.products, ...data.foods].map((item: any) => {
         return {
           ...item,
-          total: item.price * item.units,
+          units: 1, // Asignar unidades iniciales
+          total: item.price * 1,
         };
       });
+      this.dataCount = this.cartData.length;
       this.calculateTotal();
+    }, error => {
+      console.error('Error fetching products', error);
     });
   }
 
@@ -67,10 +66,6 @@ export class CartComponent implements OnInit {
     }
   }
 
-  updateQuantity(subTotal: any) {
-    // Actualización adicional si es necesario
-  }
-
   confirm(event: any, content: any, id: any) {
     this.deleteId = id;
     this.modalService.open(content, { centered: true });
@@ -81,5 +76,56 @@ export class CartComponent implements OnInit {
     this.calculateTotal();
     document.getElementById("cart-id" + id)?.remove();
     this.dataCount = this.cartData.length;
+  }
+
+  saveSale(paymentData: any) {
+    const items = this.cartData
+      .filter(item => item.units > 0) // Filtrar productos con unidades > 0
+      .map(item => ({
+        itemId: item.id,
+        quantity: item.units,
+        price: item.price,
+      }));
+
+    const requestBody = {
+      nit: "66186692",
+      totalAmount: this.totalAmount,
+      items: items,
+      ...paymentData,
+    };
+
+    this.productoService.saveSale(requestBody).subscribe((response: any) => {
+      if (response.success) {
+        alert("Venta realizada con éxito.");
+        this.clearCart(); // Llamar a la función para limpiar el carrito
+      } else {
+        alert("Error al realizar la venta.");
+      }
+    });
+  }
+
+  handlePayment() {
+    let paymentData: any = {};
+
+    if (this.selectedPaymentMethod === 'cash') {
+      paymentData = { cashAmount: this.totalAmount, cardAmount: null, cardNumber: null, transferAmount: null, transferAuthorization: null, transferBank: null };
+    } else if (this.selectedPaymentMethod === 'card') {
+      // Aquí puedes agregar lógica para recolectar los datos de la tarjeta
+      paymentData = { cashAmount: null, cardAmount: this.totalAmount, cardNumber: '1234567890', transferAmount: null, transferAuthorization: null, transferBank: null };
+    } else if (this.selectedPaymentMethod === 'transfer') {
+      // Aquí puedes agregar lógica para recolectar los datos de la transferencia
+      paymentData = { cashAmount: null, cardAmount: null, cardNumber: null, transferAmount: this.totalAmount, transferAuthorization: 'auth123', transferBank: 'Banrural' };
+    }
+
+    this.saveSale(paymentData);
+  }
+
+   // Nueva función para limpiar el carrito
+   clearCart() {
+    this.cartData.forEach(item => {
+      item.units = 0;
+      item.total = 0;
+    });
+    this.calculateTotal();
   }
 }

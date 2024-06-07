@@ -13,15 +13,6 @@
           <h5 class="fs-15 mb-0">Your Cart ({{ dataCount }} items)</h5>
         </div>
       </div>
-      <!-- <div class="col-sm">
-            <div class="d-flex justify-content-sm-end">
-              <div class="search-box ms-2">
-                <input type="text" name="searchTerm" class="form-control" placeholder="Search Products..."
-                 >
-                <i class="ri-search-line search-icon"></i>
-              </div>
-            </div>
-          </div> -->
     </div>
 
     <div
@@ -96,12 +87,10 @@
     <!-- end card -->
 
     <div class="text-end mb-4">
-      <a
-        routerLink="/ecommerce/checkout"
-        class="btn btn-primary btn-label right ms-auto"
-        ><i class="ri-arrow-right-line label-icon align-bottom fs-16 ms-2"></i>
-        Pagar</a
-      >
+      <button class="btn btn-primary btn-label right ms-auto" (click)="handlePayment()">
+        <i class="ri-arrow-right-line label-icon align-bottom fs-16 ms-2"></i>
+        Pagar
+      </button>
     </div>
   </div>
   <!-- end col -->
@@ -139,76 +128,48 @@
 
             <div class="row g-4">
               <div class="col-lg-6 col-sm-6">
-                <div
-                  data-bs-toggle="collapse"
-                  data-bs-target="#paymentmethodCollapse.show"
-                  aria-expanded="false"
-                  aria-controls="paymentmethodCollapse"
-                >
-                  <div class="form-check card-radio">
-                    <input
-                      id="paymentMethod01"
-                      name="paymentMethod"
-                      type="radio"
-                      class="form-check-input"
-                    />
-                    <label class="form-check-label" for="paymentMethod01">
-                      <span class="fs-16 text-muted me-2"
-                        ><i class="ri-paypal-fill align-bottom"></i
-                      ></span>
-                      <span class="fs-14 text-wrap">Efectivo</span>
-                    </label>
-                  </div>
+                <div class="form-check card-radio">
+                  <input
+                    id="paymentMethod01"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    (change)="selectedPaymentMethod = 'cash'"
+                  />
+                  <label class="form-check-label" for="paymentMethod01">
+                    <span class="fs-16 text-muted me-2"><i class="ri-paypal-fill align-bottom"></i></span>
+                    <span class="fs-14 text-wrap">Efectivo</span>
+                  </label>
                 </div>
               </div>
               <div class="col-lg-6 col-sm-6">
-                <div
-                  data-bs-toggle="collapse"
-                  data-bs-target="#paymentmethodCollapse"
-                  aria-expanded="true"
-                  aria-controls="paymentmethodCollapse"
-                >
-                  <div class="form-check card-radio">
-                    <input
-                      id="paymentMethod02"
-                      name="paymentMethod"
-                      type="radio"
-                      class="form-check-input"
-                      checked
-                    />
-                    <label class="form-check-label" for="paymentMethod02">
-                      <span class="fs-16 text-muted me-2"
-                        ><i class="ri-bank-card-fill align-bottom"></i
-                      ></span>
-                      <span class="fs-14 text-wrap">Credit / Debit Card</span>
-                    </label>
-                  </div>
+                <div class="form-check card-radio">
+                  <input
+                    id="paymentMethod02"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    (change)="selectedPaymentMethod = 'card'"
+                  />
+                  <label class="form-check-label" for="paymentMethod02">
+                    <span class="fs-16 text-muted me-2"><i class="ri-bank-card-fill align-bottom"></i></span>
+                    <span class="fs-14 text-wrap">Tarjeta</span>
+                  </label>
                 </div>
               </div>
-            </div>
-
-            <div class="row g-4 mt-2">
               <div class="col-lg-6 col-sm-6">
-                <div
-                  data-bs-toggle="collapse"
-                  data-bs-target="#paymentmethodCollapse.show"
-                  aria-expanded="false"
-                  aria-controls="paymentmethodCollapse"
-                >
-                  <div class="form-check card-radio">
-                    <input
-                      id="paymentMethod03"
-                      name="paymentMethod"
-                      type="radio"
-                      class="form-check-input"
-                    />
-                    <label class="form-check-label" for="paymentMethod03">
-                      <span class="fs-16 text-muted me-2"
-                        ><i class="ri-money-dollar-box-fill align-bottom"></i
-                      ></span>
-                      <span class="fs-14 text-wrap">Transference</span>
-                    </label>
-                  </div>
+                <div class="form-check card-radio">
+                  <input
+                    id="paymentMethod03"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    (change)="selectedPaymentMethod = 'transfer'"
+                  />
+                  <label class="form-check-label" for="paymentMethod03">
+                    <span class="fs-16 text-muted me-2"><i class="ri-money-dollar-box-fill align-bottom"></i></span>
+                    <span class="fs-14 text-wrap">Transferencia</span>
+                  </label>
                 </div>
               </div>
             </div>

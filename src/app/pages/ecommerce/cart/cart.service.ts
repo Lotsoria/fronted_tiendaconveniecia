@@ -1,23 +1,35 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalComponent } from "src/app/global-component";
+import { Observable } from 'rxjs';
 
 const URL_API = GlobalComponent.AUTH_API;
+
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(    private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getProduct() {
+  getProducts(): Observable<any> {
     const token = localStorage.getItem("token");
-    const data = this.http.get<any>(`${URL_API}product/list`, {
+    return this.http.get<any>(`${URL_API}/sell/create`, {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         Authorization: `${token}`,
       }),
     });
-    return data;
+  }
+
+  saveSale(data: any): Observable<any> {
+    const token = localStorage.getItem("token");
+    console.log(data)
+    return this.http.post<any>(`${URL_API}/sell/save`, data, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      }),
+    });
   }
 }
