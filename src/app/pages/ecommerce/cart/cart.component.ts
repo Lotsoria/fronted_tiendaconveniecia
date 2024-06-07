@@ -1,8 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-
-import { Cart } from "./cart.model";
-import { cartData } from "./data";
 import { CartService } from "./cart.service";
 
 @Component({
@@ -20,6 +17,7 @@ export class CartComponent implements OnInit {
   cartData!: any[];
   deleteId: any;
   dataCount: any;
+  totalAmount: number = 0;
 
   constructor(
     private modalService: NgbModal,
@@ -35,110 +33,53 @@ export class CartComponent implements OnInit {
       { label: "Shopping Cart", active: true },
     ];
     this.productoService.getProduct().subscribe((data) => {
-      console.log("prductos ->", data.list);
-      this.cartData = data.list;
-
+      this.cartData = data.list.map((item: any) => {
+        return {
+          ...item,
+          total: item.price * item.units,
+        };
+      });
+      this.calculateTotal();
     });
-    /**
-     * fetches the data
-     */
-
   }
 
-  /**
-   * Cart data fetch
-   */
-  private _fetchData() {
-
-    // this.cartData = cartData;
-    // this.dataCount = this.cartData.length
+  calculateTotal() {
+    this.totalAmount = this.cartData.reduce((sum, item) => sum + item.total, 0);
+    (document.getElementById("cart-subtotal") as HTMLElement).innerText = this.totalAmount.toFixed(2);
+    (document.getElementById("cart-total") as HTMLElement).innerText = this.totalAmount.toFixed(2);
   }
 
-  // Default
-  counter: any = 0;
   increment(event: any, id: any) {
-    this.counter = (
-      document.getElementById("cart-" + id) as HTMLInputElement
-    ).value;
-    this.counter++;
-    (document.getElementById("cart-" + id) as HTMLInputElement).value =
-      this.counter;
-
-    var priceselection = event.target
-      .closest(".card.product")
-      .querySelector(".product-line-price") as HTMLInputElement;
-    var amount = event.target
-      .closest(".card.product")
-      .querySelector(".product-price").innerHTML;
-    var sub_total_get: any =
-      document.getElementById("cart-subtotal")?.innerHTML;
-
-    var Price = amount * this.counter;
-    priceselection.innerHTML = Price.toFixed(2);
-
-    var subTotal: any = parseFloat(amount) + parseFloat(sub_total_get);
-    (document.getElementById("cart-subtotal") as HTMLInputElement).innerHTML =
-      subTotal.toFixed(2);
-
-    this.updateQuantity(subTotal);
+    const item = this.cartData.find(x => x.id === id);
+    if (item) {
+      item.units++;
+      item.total = item.price * item.units;
+      this.calculateTotal();
+    }
   }
 
   decrement(event: any, id: any) {
-    this.counter = (
-      document.getElementById("cart-" + id) as HTMLInputElement
-    ).value;
-    if (this.counter > 0) {
-      this.counter--;
-      (document.getElementById("cart-" + id) as HTMLInputElement).value =
-        this.counter;
-
-      var priceselection = event.target
-        .closest(".card.product")
-        .querySelector(".product-line-price") as HTMLInputElement;
-      var amount = event.target
-        .closest(".card.product")
-        .querySelector(".product-price").innerHTML;
-      var sub_total_get: any =
-        document.getElementById("cart-subtotal")?.innerHTML;
-
-      var Price = amount * this.counter;
-      priceselection.innerHTML = Price.toFixed(2);
-
-      var subTotal: any = parseFloat(sub_total_get) - parseFloat(amount);
-      (document.getElementById("cart-subtotal") as HTMLInputElement).innerHTML =
-        subTotal.toFixed(2);
-
-      this.updateQuantity(subTotal);
+    const item = this.cartData.find(x => x.id === id);
+    if (item && item.units > 0) {
+      item.units--;
+      item.total = item.price * item.units;
+      this.calculateTotal();
     }
   }
 
   updateQuantity(subTotal: any) {
-    var total = parseFloat(subTotal);
-    (document.getElementById("cart-total") as HTMLInputElement).innerHTML =
-      total.toFixed(2);
+    // Actualización adicional si es necesario
   }
 
-  /**
-   * Confirmation mail model
-   */
   confirm(event: any, content: any, id: any) {
     this.deleteId = id;
     this.modalService.open(content, { centered: true });
   }
 
-  // Delete Data
   deleteData(event: any, content: any, id: any) {
-    var itemTotal: any = (
-      document
-        .getElementById("cart-id" + id)
-        ?.querySelector(".product-line-price") as HTMLInputElement
-    ).innerHTML;
-    var Total: any = document.getElementById("cart-subtotal")?.innerHTML;
-    var subTotal: any = parseFloat(Total) - parseFloat(itemTotal);
-    (document.getElementById("cart-subtotal") as HTMLInputElement).innerHTML =
-      subTotal.toFixed(2);
-    this.updateQuantity(subTotal);
+    this.cartData = this.cartData.filter(x => x.id !== id);
+    this.calculateTotal();
     document.getElementById("cart-id" + id)?.remove();
-    this.dataCount = this.dataCount - 1;
+    this.dataCount = this.cartData.length;
   }
 }
