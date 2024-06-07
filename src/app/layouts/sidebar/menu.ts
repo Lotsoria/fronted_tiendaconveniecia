@@ -2,49 +2,18 @@ import { MenuItem } from './menu.model';
 
 export const MENUCASHIERADMIN: MenuItem[] = [
   {
-    id: 1,
-    label: 'MENUITEMS.MENU.TEXT',
-    isTitle: true
+    id: 19,
+    label: 'Ventas',
+    link: '/ecommerce/cart',
+    parentId: 12
   },
   {
-    id: 8,
-    label: 'MENUITEMS.APPS.TEXT',
-    icon: 'grid',
-    subItems: [
-      {
-        id: 12,
-        label: 'MENUITEMS.APPS.LIST.ECOMMERCE',
-        link: '/mailbox',
-        parentId: 8,
-        subItems: [
-          {
-            id: 13,
-            label: 'MENUITEMS.APPS.LIST.PRODUCTS',
-            link: '/ecommerce/products',
-            parentId: 12
-          },
-          {
-            id: 14,
-            label: 'Foods',
-            link: '/ecommerce/foods',
-            parentId: 12
-          },
-          {
-            id: 19,
-            label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
-            link: '/ecommerce/cart',
-            parentId: 12
-          },
-          {
-            id: 20,
-            label: 'MENUITEMS.APPS.LIST.CHECKOUT',
-            link: '/ecommerce/checkout',
-            parentId: 12
-          }
-        ]
-      },
-    ]
+    id: 20,
+    label: 'Devoluciones',
+    link: '/ecommerce/refunds',
+    parentId: 12
   },
+  
 ];
 export const MENUADMINSUPERADMIN: MenuItem[] = [
   {
@@ -63,12 +32,7 @@ export const MENUADMINSUPERADMIN: MenuItem[] = [
         link: '/mailbox',
         parentId: 8,
         subItems: [
-          {
-            id: 13,
-            label: 'MENUITEMS.APPS.LIST.PRODUCTS',
-            link: '/ecommerce/products',
-            parentId: 12
-          },
+
           {
             id: 15,
             label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
@@ -116,6 +80,32 @@ export const MENUADMINSUPERADMIN: MenuItem[] = [
       },
     ]
   },
+
+  {
+    id: 19,
+    label: 'Ventas',
+    link: '/ecommerce/cart',
+    parentId: 12
+  },
+  {
+    id: 20,
+    label: 'Devoluciones',
+    link: '/ecommerce/refunds',
+    parentId: 12
+  },
+  {
+    id: 13,
+    label: 'Productos',
+    link: '/ecommerce/products',
+    parentId: 12
+  },
+  {
+    id: 14,
+    label: 'Alimentos',
+    link: '/ecommerce/foods',
+    parentId: 12
+  },
+  
 ];
 
 export const MENUSUPER: MenuItem[] = [
@@ -153,18 +143,6 @@ export const MENUSUPER: MenuItem[] = [
             link: '/ecommerce/checkout',
             parentId: 12
           },
-          {
-            id: 20,
-            label: 'Devoluciones',
-            link: '/',
-            parentId: 12
-          },
-          {
-            id: 20,
-            label: 'Registro de devoluciones',
-            link: '/',
-            parentId: 12
-          }
         ]
       },
       {
