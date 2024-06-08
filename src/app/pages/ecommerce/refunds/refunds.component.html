@@ -1,1 +1,64 @@
-<p>refunds works!</p>
+<div class="row">
+  <div class="col-12">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input type="text" formControlName="id" class="form-control" id="id">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="day" class="form-label">Día</label>
+            <input type="date" formControlName="day" class="form-control" id="day">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="nit" class="form-label">NIT</label>
+            <input type="text" formControlName="nit" class="form-control" id="nit">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-end">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="table-responsive mt-4">
+      <table class="table align-middle custom-datatable">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Day</th>
+            <th>Hour</th>
+            <th>NIT</th>
+            <th>Total Amount</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sell of refunds">
+            <td>{{ sell.productName }}</td>
+            <td>{{ sell.day }}</td>
+            <td>{{ sell.hour }}</td>
+            <td>{{ sell.nit }}</td>
+            <td>{{ sell.totalAmount }}</td>
+            <td>{{ sell.quantity }}</td>
+            <td>{{ sell.price }}</td>
+            <td>{{ sell.amount }}</td>
+            <td>
+              <button (click)="onRefund(sell.id, sell.sellDetails)" class="btn btn-danger">Devolver</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

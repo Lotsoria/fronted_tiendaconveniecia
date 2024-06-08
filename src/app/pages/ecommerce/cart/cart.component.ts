@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   dataCount: any;
   totalAmount: number = 0;
   selectedPaymentMethod: string = 'cash';
+  clientNit: string = ''; // Variable para enlazar el NIT
 
   constructor(
     private modalService: NgbModal,
@@ -31,8 +32,9 @@ export class CartComponent implements OnInit {
       this.cartData = [...data.products, ...data.foods].map((item: any) => {
         return {
           ...item,
-          units: 1, // Asignar unidades iniciales
-          total: item.price * 1,
+          units: 0, 
+          total: 0, // Inicializar el total en 0
+          quantity: item.quantity || 0 // Asegurar que quantity esté asignado correctamente
         };
       });
       this.dataCount = this.cartData.length;
@@ -50,10 +52,10 @@ export class CartComponent implements OnInit {
 
   increment(event: any, id: any) {
     const item = this.cartData.find(x => x.id === id);
-    if (item) {
-      item.units++;
-      item.total = item.price * item.units;
-      this.calculateTotal();
+    if (item && item.units < item.quantity) {
+        item.units++;
+        item.total = item.price * item.units;
+        this.calculateTotal();
     }
   }
 
@@ -88,7 +90,7 @@ export class CartComponent implements OnInit {
       }));
 
     const requestBody = {
-      nit: "66186692",
+      nit: this.clientNit, // Utilizar el NIT ingresado por el cliente
       totalAmount: this.totalAmount,
       items: items,
       ...paymentData,
@@ -98,6 +100,7 @@ export class CartComponent implements OnInit {
       if (response.success) {
         alert("Venta realizada con éxito.");
         this.clearCart(); // Llamar a la función para limpiar el carrito
+        this.clientNit = ''; // Vaciar el cuadro del NIT después de la venta
       } else {
         alert("Error al realizar la venta.");
       }
@@ -120,8 +123,8 @@ export class CartComponent implements OnInit {
     this.saveSale(paymentData);
   }
 
-   // Nueva función para limpiar el carrito
-   clearCart() {
+  // Nueva función para limpiar el carrito
+  clearCart() {
     this.cartData.forEach(item => {
       item.units = 0;
       item.total = 0;

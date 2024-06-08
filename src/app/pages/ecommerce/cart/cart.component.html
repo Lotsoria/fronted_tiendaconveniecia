@@ -41,9 +41,10 @@
                 type="number"
                 class="product-quantity"
                 id="cart-{{ data.id }}"
-                value="{{ data.units }}"
+                [value]="data.units"
                 min="0"
-                max="100"
+                max="{{ data.quantity }}"
+                readonly
               />
               <button
                 type="button"
@@ -102,6 +103,10 @@
           <h5 class="card-title mb-0">Order Summary</h5>
         </div>
         <div class="card-body pt-2">
+          <div class="mb-3">
+            <label for="nitInput" class="form-label">NIT</label>
+            <input type="text" class="form-control" id="nitInput" [(ngModel)]="clientNit">
+          </div>
           <div class="table-responsive">
             <table class="table table-borderless mb-0">
               <tbody>
