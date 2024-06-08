@@ -111,7 +111,7 @@ export const MENUSUPER: MenuItem[] = [
   },
   {
     id: 88,
-    label: "Disppsitivos",
+    label: "Dispositivos",
     link: "/pages/team",
     parentId: 82,
   },

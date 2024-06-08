@@ -13,16 +13,6 @@
           <div class="row g-4">
             <div class="col-sm">
               <div class="d-flex justify-content-sm-end">
-                <div class="search-box ms-2">
-                  <input
-                    type="text"
-                    name="searchTerm"
-                    class="form-control"
-                    placeholder="Search Foods..."
-                    [(ngModel)]="service.searchTerm"
-                  />
-                  <i class="ri-search-line search-icon"></i>
-                </div>
               </div>
             </div>
           </div>
@@ -68,8 +58,6 @@
                                 >
                                   Price
                                 </th>
-                                <th scope="col">Action</th>
-                              </tr>
                             </thead>
                             <tbody>
                               <tr
@@ -90,12 +78,10 @@
                                     <div class="d-flex align-items-center">
                                       <div class="flex-grow-1">
                                         <h5 class="fs-14 mb-1">
-                                          <a
-                                            routerLink="/ecommerce/product-detail/1"
-                                            class="text-body"
-                                            >{{ data.name }}</a
-                                          >
-                                        </h5>
+                                          <a class="text-body">{{
+                                            data.name
+                                          }}</a>
+                                        </h5>pppp00
                                       </div>
                                     </div>
                                   </span>
@@ -106,40 +92,6 @@
                                     [result]="data.price"
                                     [term]="service.searchTerm"
                                   ></ngb-highlight>
-                                </td>
-                                <td>
-                                  <span>
-                                    <div class="dropdown" ngbDropdown>
-                                      <button
-                                        class="btn btn-soft-secondary btn-sm dropdown arrow-none"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                        ngbDropdownToggle
-                                      >
-                                        <i class="ri-more-fill"></i>
-                                      </button>
-                                      <ul
-                                        class="dropdown-menu dropdown-menu-end"
-                                        ngbDropdownMenu
-                                      >
-                                        <li class="dropdown-divider"></li>
-                                        <li>
-                                          <a
-                                            class="dropdown-item"
-                                            href="javascript:void(0);"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#removeItemModal"
-                                            (click)="confirm(content, data._id)"
-                                            ><i
-                                              class="ri-delete-bin-fill align-bottom me-2 text-muted"
-                                            ></i>
-                                            Delete</a
-                                          >
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </span>
                                 </td>
                               </tr>
                             </tbody>
