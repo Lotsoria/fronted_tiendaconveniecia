@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
     // });
 
     this.authenticationService
-      .login(this.f["code"].value, this.f["password"].value, this.f["identifier"].value)
+      .login(this.f["code"].value, this.f["password"].value, "64dvV9pCmIXjdlr")
       .subscribe((data: any) => {
         if (data.success == true) {
           const currentUser = {
