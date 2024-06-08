@@ -1,207 +1,121 @@
-import { MenuItem } from './menu.model';
+import { MenuItem } from "./menu.model";
 
 export const MENUCASHIERADMIN: MenuItem[] = [
   {
     id: 19,
-    label: 'Ventas',
-    link: '/ecommerce/cart',
-    parentId: 12
+    label: "Ventas",
+    link: "/ecommerce/cart",
+    parentId: 12,
   },
   {
     id: 20,
-    label: 'Devoluciones',
-    link: '/ecommerce/refunds',
-    parentId: 12
+    label: "Devoluciones",
+    link: "/ecommerce/refunds",
+    parentId: 12,
   },
-  
 ];
 export const MENUADMINSUPERADMIN: MenuItem[] = [
   {
-    id: 1,
-    label: 'MENUITEMS.MENU.TEXT',
-    isTitle: true
-  },
-  {
-    id: 8,
-    label: 'MENUITEMS.APPS.TEXT',
-    icon: 'grid',
-    subItems: [
-      {
-        id: 12,
-        label: 'MENUITEMS.APPS.LIST.ECOMMERCE',
-        link: '/mailbox',
-        parentId: 8,
-        subItems: [
-
-          {
-            id: 15,
-            label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
-            link: '/ecommerce/add-product',
-            parentId: 12
-          },
-          {
-            id: 19,
-            label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
-            link: '/ecommerce/cart',
-            parentId: 12
-          },
-          {
-            id: 20,
-            label: 'MENUITEMS.APPS.LIST.CHECKOUT',
-            link: '/ecommerce/checkout',
-            parentId: 12
-          },
-          {
-            id: 20,
-            label: 'Devoluciones',
-            link: '/',
-            parentId: 12
-          },
-          {
-            id: 20,
-            label: 'Registro de devoluciones',
-            link: '/',
-            parentId: 12
-          }
-        ]
-      },
-      {
-        id: 42,
-        label: 'MENUITEMS.APPS.LIST.INVOICES',
-        parentId: 8,
-        subItems: [
-          {
-            id: 43,
-            label: 'MENUITEMS.APPS.LIST.LISTVIEW',
-            link: '/invoices/list',
-            parentId: 42
-          },
-        ]
-      },
-    ]
-  },
-
-  {
     id: 19,
-    label: 'Ventas',
-    link: '/ecommerce/cart',
-    parentId: 12
+    label: "Ventas",
+    link: "/ecommerce/cart",
+    parentId: 12,
   },
   {
     id: 20,
-    label: 'Devoluciones',
-    link: '/ecommerce/refunds',
-    parentId: 12
+    label: "Devoluciones",
+    link: "/ecommerce/refunds",
+    parentId: 12,
   },
   {
-    id: 13,
-    label: 'Productos',
-    link: '/ecommerce/products',
-    parentId: 12
+    id: 21,
+    label: "Productos",
+    link: "/ecommerce/products",
+    parentId: 12,
   },
   {
-    id: 14,
-    label: 'Alimentos',
-    link: '/ecommerce/foods',
-    parentId: 12
+    id: 22,
+    label: "Alimentos",
+    link: "/ecommerce/foods",
+    parentId: 12,
   },
-  
+  {
+    id: 23,
+    label: "Registro de ventas",
+    link: "/",
+    parentId: 12,
+  },
+  {
+    id: 24,
+    label: "Registro de devoluciones",
+    link: "/",
+    parentId: 12,
+  },
+  {
+    id: 25,
+    label: "Registro de entras y salidas de productos",
+    link: "/",
+    parentId: 12,
+  },
 ];
 
 export const MENUSUPER: MenuItem[] = [
   {
-    id: 1,
-    label: 'MENUITEMS.MENU.TEXT',
-    isTitle: true
+    id: 21,
+    label: "Productos",
+    link: "/ecommerce/products",
+    parentId: 12,
   },
   {
-    id: 8,
-    label: 'MENUITEMS.APPS.TEXT',
-    icon: 'grid',
-    subItems: [
-      {
-        id: 12,
-        label: 'MENUITEMS.APPS.LIST.ECOMMERCE',
-        link: '/mailbox',
-        parentId: 8,
-        subItems: [
-          {
-            id: 15,
-            label: 'MENUITEMS.APPS.LIST.CREATEPRODUCT',
-            link: '/ecommerce/add-product',
-            parentId: 12
-          },
-          {
-            id: 19,
-            label: 'MENUITEMS.APPS.LIST.SHOPPINGCART',
-            link: '/ecommerce/cart',
-            parentId: 12
-          },
-          {
-            id: 20,
-            label: 'MENUITEMS.APPS.LIST.CHECKOUT',
-            link: '/ecommerce/checkout',
-            parentId: 12
-          },
-        ]
-      },
-      {
-        id: 42,
-        label: 'MENUITEMS.APPS.LIST.INVOICES',
-        parentId: 8,
-        subItems: [
-          {
-            id: 43,
-            label: 'MENUITEMS.APPS.LIST.LISTVIEW',
-            link: '/invoices/list',
-            parentId: 42
-          },
-        ]
-      },
-    ]
-  },
-  // CONFIGURACIÓN
-  
-  {
-    id: 54,
-    label: 'MENUITEMS.PAGES.TEXT',
-    isTitle: true
+    id: 22,
+    label: "Alimentos",
+    link: "/ecommerce/foods",
+    parentId: 12,
   },
   {
-    id: 55,
-    label: 'MENUITEMS.AUTHENTICATION.TEXT',
-    icon: 'users',
-    subItems: [
-      {
-        id: 62,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.PASSWORDRESET',
-        link: '/auth/pass-reset/cover',
-        parentId: 55
-      },
-    ]
+    id: 23,
+    label: "Registro de ventas",
+    link: "/",
+    parentId: 12,
   },
   {
-    id: 82,
-    label: 'MENUITEMS.PAGES.TEXT',
-    icon: 'command',
-    subItems: [
-      {
-        id: 87,
-        label: 'MENUITEMS.PAGES.LIST.TEAM',
-        link: '/pages/team',
-        parentId: 82
-      },
-      {
-        id: 88,
-        label: 'DEVICES',
-        link: '/pages/team',
-        parentId: 82
-      },
-    ]
+    id: 24,
+    label: "Registro de devoluciones",
+    link: "/",
+    parentId: 12,
+  },
+  {
+    id: 25,
+    label: "Registro de entras y salidas de productos",
+    link: "/",
+    parentId: 12,
   },
 
+  // {
+  //   id: 54,
+  //   label: 'MENUITEMS.PAGES.TEXT',
+  //   isTitle: true
+  // },
+
+  {
+    id: 62,
+    label: "MENUITEMS.AUTHENTICATION.LIST.PASSWORDRESET",
+    link: "/auth/pass-reset/cover",
+    parentId: 55,
+  },
+  {
+    id: 87,
+    label: "MENUITEMS.PAGES.LIST.TEAM",
+    link: "/pages/team",
+    parentId: 82,
+  },
+  {
+    id: 88,
+    label: "Dispositivos",
+    link: "/pages/team",
+    parentId: 82,
+  },
 ];
-
 
 // export const MENU: MenuItem[] = [
 //   {

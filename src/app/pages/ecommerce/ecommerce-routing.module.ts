@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
 // Component pages
 import { ProductsComponent } from "./products/products.component";
-import { FoodsComponent } from './foods/foods.component';
+import { FoodsComponent } from "./foods/foods.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { AddProductComponent } from "./add-product/add-product.component";
 import { OrdersComponent } from "./orders/orders.component";
@@ -13,68 +13,69 @@ import { CartComponent } from "./cart/cart.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { SellersComponent } from "./sellers/sellers.component";
 import { SellerDetailsComponent } from "./seller-details/seller-details.component";
-import { AuthGuardCashierAdmin } from 'src/app/core/guards/auth.guard';
-import { RefundsComponent } from './refunds/refunds.component';
+import {
+  AuthGuardCashierAdmin,
+  AuthGuardAdminSuper,
+} from "src/app/core/guards/auth.guard";
+import { RefundsComponent } from "./refunds/refunds.component";
 
 const routes: Routes = [
   {
     path: "products",
     component: ProductsComponent,
-    canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "foods",
     component: FoodsComponent,
-    canActivate: [AuthGuardCashierAdmin],
+    // canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "product-detail/:id",
     component: ProductDetailComponent,
-    canActivate: [AuthGuardCashierAdmin],
+    // canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "add-product",
-    component: AddProductComponent
+    component: AddProductComponent,
   },
   {
     path: "orders",
-    component: OrdersComponent
+    component: OrdersComponent,
   },
   {
     path: "order-details",
-    component: OrdersDetailsComponent
+    component: OrdersDetailsComponent,
   },
   {
     path: "customers",
-    component: CustomersComponent
+    component: CustomersComponent,
   },
   {
     path: "cart",
     component: CartComponent,
-    canActivate: [AuthGuardCashierAdmin],
+    // canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "checkout",
     component: CheckoutComponent,
-    canActivate: [AuthGuardCashierAdmin],
+    // canActivate: [AuthGuardCashierAdmin],
   },
   {
     path: "sellers",
-    component: SellersComponent
+    component: SellersComponent,
   },
   {
     path: "seller-details",
-    component: SellerDetailsComponent
+    component: SellerDetailsComponent,
   },
   {
     path: "refunds",
-    component: RefundsComponent
+    component: RefundsComponent,
   },
-
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class EcommerceRoutingModule {}
